@@ -1,0 +1,49 @@
+<mat-drawer-container>
+    <mat-drawer #drawer mode="side" opened="true">
+        <mat-nav-list>
+            <div class="logo py-4">
+              <img [src]="gcvote" alt="">
+            </div>
+            <mat-divider></mat-divider>
+            <h2 matSubheader class="mt-2"></h2>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/dashboard">
+              <mat-icon>dashboard</mat-icon> Dashboard
+            </a>         
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/results">
+              <mat-icon>leaderboard</mat-icon> Results
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/voters">
+              <mat-icon>how_to_reg</mat-icon> Voters
+            </a>
+            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/environments">
+              <mat-icon>where_to_vote</mat-icon> Environments
+            </a>
+          </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+    <mat-toolbar>
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+            <!-- <img src="./assets/user.png" alt="" class="user-image mr-1 p-2" /> -->
+            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <ng-template matMenuContent>    
+                <button mat-menu-item>
+                    <mat-icon>manage_accounts</mat-icon>
+                    Account settings
+                </button> 
+
+                <button mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon>
+                  Log out
+                </button>
+            </ng-template>
+        </mat-menu>
+    </mat-toolbar>
+    <router-outlet>
+    </router-outlet>
+</mat-drawer-content>
+

@@ -1,0 +1,54 @@
+  html {
+   background-color: #5C6BC0 !important; 
+  }
+  
+  h3 {
+    font-weight: bolder;
+    color: #4CAF50;
+    margin-top: 10px;
+    margin-left: 315px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 200px; 
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+
+  .emailField {
+    margin-bottom: -20px;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .mat-raised-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 200px; 
+    color: #fff;
+  }
+
+mat-card{
+    top: 250px;
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;  
+
+    img {
+        margin-top: 15px;
+        height: 160px;
+        width: 160px;
+        margin-left: 150px;
+        margin-bottom: 10px;
+      }  
+}
+

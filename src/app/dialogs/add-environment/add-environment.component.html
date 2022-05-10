@@ -1,0 +1,53 @@
+<h1>Add Environment</h1>
+<!-- <form (ngSubmit)="createEnv()"> -->
+    <form>
+    <mat-form-field class="full-width-input" color="primary">
+        <!-- <input matInput [formControl]="nameControl" placeholder="Environment Name" value="" name="Name" required> -->
+        <input matInput placeholder="Environment Name" value="" name="Name" required>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="primary">
+        <mat-label>Department</mat-label>
+        <!-- <mat-select [formControl]="departmentControl" name="dept" required></mat-select>
+        <mat-option *ngFor="let department of departments" [value]="department">
+            {{department}}
+        </mat-option> -->
+         <mat-select name="department" required >
+            <mat-option>
+                CCS
+            </mat-option>
+         </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="primary">
+        <mat-label>Course</mat-label>
+        <!-- <mat-select [formControl]="departmentControl" name="dept" required></mat-select>
+        <mat-option *ngFor="let department of departments" [value]="department">
+            {{department}}
+        </mat-option> -->
+         <mat-select name="course" required >
+            <mat-option>
+                BSIT
+            </mat-option>
+            <mat-option>
+                BSCS
+            </mat-option>
+            <mat-option>
+                BSEMC
+            </mat-option>
+            <mat-option>
+                ACT
+            </mat-option>
+         </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="primary">
+        <textarea matInput placeholder="Description" value="" name="Description" required></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="primary">
+        <ngx-mat-file-input formControlName="basicfile" placeholder="Department Logo" required></ngx-mat-file-input>
+        <mat-icon matSuffix color="accent">image</mat-icon>
+      </mat-form-field>
+    <div class="button-wrapper">
+        <!-- <button mat-stroked-button type="button" color="accent" (click)="closeDialog()">Cancel</button> -->
+        <button mat-stroked-button type="button" color="primary">Cancel</button>
+        <button mat-raised-button type="submit" color="primary">Add Environment</button>
+    </div>
+</form>
