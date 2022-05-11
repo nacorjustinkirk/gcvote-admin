@@ -41,11 +41,24 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .positionButtons {
+    margin-top: -47.5px;
+    margin-left: 782.5px;
+  }
   
-  button {
-    top: 10px;
-    margin-left: auto;
-    height: 50px;
+  .addPosition {
+    width: 100%;
+    margin-bottom: 10px;
+    color: #4CAF50;
+  }
+
+  .addCandidate {
+    color: #fff;
+  }
+
+  .editPosition {
+    color: #fff;
   }
   
   mat-card-content {
@@ -61,4 +74,23 @@
     h4 {
       line-height: 1;
     } 
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #fff;
+  }
+
+  .positionCard {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    height: 64px;
+  }
+
+  .back {
+    top: 10px;
+    margin-left: auto;
+    height: 50px;
   }

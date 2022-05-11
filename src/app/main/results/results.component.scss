@@ -82,11 +82,16 @@ mat-progress-bar {
 h1 {
   font-size: 2rem;
   font-weight: bolder;
-  color: #4CAF50;
+  color: #fff;
 }
 
 mat-divider {
   margin-top: -30px;
   margin-bottom: 30px;
   margin-left: 175px;
+}
+
+.positionCard {
+  margin-bottom: 10px;
+  background-color: #4CAF50;
 }

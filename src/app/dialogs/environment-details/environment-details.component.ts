@@ -17,4 +17,7 @@ export class EnvironmentDetailsComponent implements OnInit {
 
   deleteEnvironment() {
   }
+
+  dismiss() {
+  }
 }

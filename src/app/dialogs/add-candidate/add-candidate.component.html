@@ -1,9 +1,9 @@
-<h1>Environment Details</h1>
+<h1>Add Candidate</h1>
 <!-- <form (ngSubmit)="createEnv()"> -->
     <form>
     <mat-form-field class="full-width-input" color="primary">
         <!-- <input matInput [formControl]="nameControl" placeholder="Environment Name" value="" name="Name" required> -->
-        <input matInput placeholder="Environment Name" value="" name="Name" required>
+        <input matInput placeholder="Candidate's Name" value="" name="Name" required>
     </mat-form-field>
     <mat-form-field class="full-width-input" color="primary">
         <mat-label>Department</mat-label>
@@ -38,17 +38,16 @@
             </mat-option>
          </mat-select>
     </mat-form-field>
-    <mat-form-field class="full-width-input" color="primary">
+    <!-- <mat-form-field class="full-width-input" color="accent">
         <textarea matInput placeholder="Description" value="" name="Description" required></textarea>
-    </mat-form-field>
+    </mat-form-field> -->
     <mat-form-field class="full-width-input" color="primary">
-        <ngx-mat-file-input formControlName="basicfile" placeholder="Department Logo" required></ngx-mat-file-input>
+        <ngx-mat-file-input formControlName="basicfile" placeholder="Photo" required></ngx-mat-file-input>
         <mat-icon matSuffix color="accent">image</mat-icon>
       </mat-form-field>
     <div class="button-wrapper">
         <!-- <button mat-stroked-button type="button" color="accent" (click)="closeDialog()">Cancel</button> -->
-        <button mat-stroked-button type="button" color="primary" (click)="deleteEnvironment()">Delete</button>
-        <button mat-raised-button color="accent" routerLink="/main/candidates" (click)="dismiss()">Candidates</button>
-        <button mat-raised-button type="submit" color="primary" (click)="updateEnvironment()">Update</button>
+        <button mat-stroked-button type="button" color="primary"(click)="closeDialog">Cancel</button>
+        <button mat-raised-button type="submit" color="primary"(click)="addCandidate">Add Candidate</button>
     </div>
 </form>
