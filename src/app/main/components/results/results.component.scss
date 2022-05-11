@@ -44,16 +44,23 @@ mat-icon {
 
 mat-card-content {
   display: block;
-  text-align: center;
   img {
     border-radius: 100px;
-    margin-bottom: 5px;
+    margin-bottom: -60px;
+  }
+  h1 {
+    font-weight: bolder;
+    margin-left: 125px;
+    color: #3F51B5;
   }
   h2 {
-    margin-bottom: 5px;
+    margin-left: 125px;
+    margin-bottom: -6px; 
+    font-weight: bold;
   }
-  h4 {
-    line-height: .5;
+  h3 {
+    margin-left: 125px;
+    margin-bottom: -6px; 
   } 
 }
 
@@ -61,4 +68,25 @@ button {
   top: 10px;
   margin-left: auto;
   height: 50px;
+}
+
+.candidateInfo {
+    margin-top: -25px;
+}
+
+mat-progress-bar {
+  height: 10px;
+  border-radius: 100px !important;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: #4CAF50;
+}
+
+mat-divider {
+  margin-top: -30px;
+  margin-bottom: 30px;
+  margin-left: 175px;
 }

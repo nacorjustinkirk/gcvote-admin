@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor() { }
+  constructor(private route:Router) { }
+
+  setSession(data: any, status: boolean) {
+    const sessions = {
+      "index": data,
+      "session": status
+    };
+
+    sessionStorage.setItem('account', JSON.stringify(sessions));
+  }
 
   // generateSalt() {
   //   var salt = CryptoJS.lib.WordArray.random(128 / 8);
