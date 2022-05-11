@@ -15,6 +15,7 @@ import { AddEnvironmentComponent } from './dialogs/add-environment/add-environme
 import { EnvironmentDetailsComponent } from './dialogs/environment-details/environment-details.component';
 import { EnvironmentsComponent } from './main/environments/environments.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { AccountSettingsComponent } from './dialogs/account-settings/account-settings.component';
 import { LoginComponent } from './login/login.component';
 
 import { MaterialModules } from './material.module';
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     EnvironmentDetailsComponent,
     EnvironmentsComponent,
     DashboardComponent,
+    AccountSettingsComponent,
     LoginComponent,
   ],
   imports: [
