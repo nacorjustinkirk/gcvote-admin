@@ -21,12 +21,14 @@ import { CandidatesComponent } from './main/candidates/candidates.component';
 import { CandidateDetailsComponent } from './dialogs/candidate-details/candidate-details.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { AccountSettingsComponent } from './dialogs/account-settings/account-settings.component';
+import { ForgotPasswordComponent } from './dialogs/forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 
 import { MaterialModules } from './material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     CandidateDetailsComponent,
     DashboardComponent,
     AccountSettingsComponent,
+    ForgotPasswordComponent,
     LoginComponent,
   ],
   imports: [

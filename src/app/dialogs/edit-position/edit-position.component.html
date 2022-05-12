@@ -4,21 +4,10 @@
     <mat-form-field class="full-width-input" color="primary">
         <input matInput placeholder="Position" value="" name="Name" required>
     </mat-form-field>
-    <mat-form-field class="full-width-input" color="primary">
-        <input matInput placeholder="Partylist" value="" name="Name" required>
-    </mat-form-field>
-    <mat-form-field class="full-width-input" color="primary">
-        <mat-label>Department</mat-label>
-        <mat-select name="department" required >
-            <mat-option>
-                CCS
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
     <div class="button-wrapper">
         <!-- <button mat-stroked-button type="button" color="accent" (click)="closeDialog()">Cancel</button> -->
         <button mat-stroked-button type="button" color="primary"(click)="closeDialog">Cancel</button>
-        <button mat-raised-button type="submit" color="primary" (click)="editPosition()">Edit</button>
+        <button mat-raised-button type="submit" color="primary" (click)="editPosition()">Update</button>
     </div>
 </form>
 
