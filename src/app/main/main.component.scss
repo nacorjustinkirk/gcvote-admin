@@ -20,7 +20,7 @@ mat-toolbar {
     border-color: white;
   }
   .mat-list-item {
-    color: #3F51B5 !important;
+    color: #444F5A !important;
     font-size: 1rem;
     height: 44px !important;
     margin-bottom: 4px;
@@ -32,7 +32,7 @@ mat-toolbar {
         border-radius: 5px;
         margin: 0 8px;
         &:hover {
-          background: #3F51B5 !important;
+          background: #444F5A !important;
         }
       }
     }
@@ -47,15 +47,15 @@ mat-toolbar {
     color: #f2f5f7 !important;
     ::ng-deep {
       .mat-list-item-content {
-        background: #3F51B5 !important;
+        background: #444F5A !important;
         &:hover {
-          background: #3F51B5 !important;
+          background: #444F5A !important;
         }
       }
     } 
   }
   .mat-subheader {
-    color: #3F51B5;
+    color: #444F5A;
     font-size: 0.6rem;
     font-weight: 100;
     letter-spacing: 1px;

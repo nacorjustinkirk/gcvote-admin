@@ -1,15 +1,15 @@
 .page {
   &__box {
     min-height: 138px;
-    background: #5C6BC0;
+    background: #FF9999;
     margin: 0 -1rem;
 
     h1 {
       position: absolute;
       top: 110px;
       left: 0;
-      opacity: 50%;
-      color: #fff;
+      // opacity: 50%;
+      color: #FFC8C8;
       padding: 0 1rem;
       font-size: 60px;
       font-weight: bolder;
@@ -32,7 +32,7 @@
 
 mat-icon {
   font-size: 18px;
-  color: #3F51B5;
+  color: #FF9999;
   }
   
 .searchBox {
@@ -55,7 +55,7 @@ mat-card-content {
   h1 {
     font-weight: bolder;
     margin-left: 125px;
-    color: #3F51B5;
+    color: #FF9999;
   }
   h2 {
     margin-left: 125px;
@@ -97,5 +97,5 @@ mat-divider {
 
 .positionCard {
   margin-bottom: 10px;
-  background-color: #4CAF50;
+  background-color: #444F5A;
 }

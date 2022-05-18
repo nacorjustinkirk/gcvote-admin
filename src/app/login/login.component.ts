@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from '../dialogs/forgot-password/forgot-passw
 export class LoginComponent implements OnInit {
  
   gcvote: string = 'assets/gcvote.png';
+  school: string = 'assets/school.jpg';
   loginForm: FormGroup;
   message: any;
 

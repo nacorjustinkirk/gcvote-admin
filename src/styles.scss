@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$admin-portal-primary: mat.define-palette(mat.$indigo-palette, 500);
-$admin-portal-accent: mat.define-palette(mat.$pink-palette, 500);
+$admin-portal-primary: mat.define-palette(mat.$blue-grey-palette, 800);
+$admin-portal-accent: mat.define-palette(mat.$red-palette, 200);
 
 // The warn palette is optional (defaults to red).
 $admin-portal-warn: mat.define-palette(mat.$red-palette);

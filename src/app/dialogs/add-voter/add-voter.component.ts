@@ -7,14 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVoterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }
 
-  addVoter() {
-  }
-
-  closeDialog() {
-  }
+  addCandidate() {}
 }

@@ -1,20 +1,20 @@
 .page {
-    &__box {
-      min-height: 138px;
-      background: #5C6BC0;
-      margin: 0 -1rem;
-  
-      h1 {
-        position: absolute;
-        top: 110px;
-        left: 0;
-        opacity: 50%;
-        color: #fff;
-        padding: 0 1rem;
-        font-size: 60px;
-        font-weight: bolder;
-      }
+  &__box {
+    min-height: 138px;
+    background: #FF9999;
+    margin: 0 -1rem;
+
+    h1 {
+      position: absolute;
+      top: 110px;
+      left: 0;
+      // opacity: 50%;
+      color: #FFC8C8;
+      padding: 0 1rem;
+      font-size: 60px;
+      font-weight: bolder;
     }
+  }
     &__content {
       min-height: calc(100vh - 178px);
       border-radius: 5px;
@@ -32,7 +32,7 @@
   
   mat-icon {
     font-size: 18px;
-    color: #3F51B5;
+    color: #444F5A;
   }
   
   .searchBox {
@@ -44,13 +44,13 @@
 
   .positionButtons {
     margin-top: -47.5px;
-    margin-left: 766px;
+    margin-left: 761px;
   }
   
   .addPosition {
     width: 100%;
     margin-bottom: 10px;
-    color: #4CAF50;
+    color: #444F5A;
   }
 
   .addCandidate {
@@ -70,9 +70,11 @@
     }
     h2 {
       margin-bottom: 5px;
+      line-height: 1.25;
     }
     h4 {
       line-height: 1;
+      color: #FF9999;
     } 
   }
 
@@ -85,7 +87,7 @@
   .positionCard {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #4CAF50;
+    background-color: #444F5A;
     height: 64px;
   }
 

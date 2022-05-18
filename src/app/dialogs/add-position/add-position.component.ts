@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-position',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPositionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<AddPositionComponent>,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +19,7 @@ export class AddPositionComponent implements OnInit {
   }
 
   closeDialog(){
+    this.dialogRef.close();
   }
 
 }

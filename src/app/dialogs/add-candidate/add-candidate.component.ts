@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-candidate',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCandidateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<AddCandidateComponent>,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +20,6 @@ export class AddCandidateComponent implements OnInit {
   }
 
   closeDialog(){
+    this.dialogRef.close();
   }
 }

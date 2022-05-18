@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-position',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditPositionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<EditPositionComponent>,
+  ) { }
 
   ngOnInit(): void {
   }
 
   closeDialog(){
+    this.dialogRef.close();
   }
 
   editPosition(){
