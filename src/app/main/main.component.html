@@ -1,49 +1,44 @@
 <mat-drawer-container>
-    <mat-drawer #drawer mode="side" opened="true">
-        <mat-nav-list>
-            <div class="logo py-4">
-              <img [src]="gcvote" alt="">
-            </div>
-            <mat-divider></mat-divider>
-            <h2 matSubheader class="mt-2"></h2>
-            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/dashboard">
-              <mat-icon>dashboard</mat-icon> Dashboard
-            </a>         
-            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/results">
-              <mat-icon>leaderboard</mat-icon> Results
-            </a>
-            <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/voters">
-              <mat-icon>how_to_reg</mat-icon> Voters
-            </a> -->
-            <a mat-list-item routerLinkActive="list-item-active" routerLink="/main/environments">
-              <mat-icon>where_to_vote</mat-icon> Environments
-            </a>
-          </mat-nav-list>
-    </mat-drawer>
-    <mat-drawer-content>
-    <mat-toolbar>
-        <button mat-icon-button (click)="drawer.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
-            <!-- <img src="./assets/user.png" alt="" class="user-image mr-1 p-2" /> -->
-            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <ng-template matMenuContent>    
-                <button mat-menu-item (click)="accountSettings()">
-                    <mat-icon>manage_accounts</mat-icon>
-                    Account settings
-                </button> 
 
-                <button mat-menu-item (click)="logoutAccount()">
-                    <mat-icon>exit_to_app</mat-icon>
-                  Log out
-                </button>
-            </ng-template>
-        </mat-menu>
-    </mat-toolbar>
-    <router-outlet>
-    </router-outlet>
-</mat-drawer-content>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="title">
+      <img src="../../assets/gcvote.png">
+      <h3>COMMITTEE<br>MEMBER PORTAL</h3>
+      <hr color="#FF9999" width="200px">
+    </div>
+    <ul>
+      <li routerLinkActive="list-item-active" routerLink="/main/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </li>
+      <li routerLinkActive="list-item-active" routerLink="/main/results">
+        <mat-icon>leaderboard</mat-icon>
+        <span>Results</span>
+      </li>
+      <li routerLinkActive="list-item-active" [routerLink]="['/main/environments', adminData.adminid_fld]">
+        <mat-icon>where_to_vote</mat-icon>
+        <span>Environments</span>
+      </li>
+    </ul>
+    <div class="user-container">
+      <div class="user-info">
+        <img src="">
+        <span> {{ adminData.adminlname_fld }} {{ adminData.adminext_fld }}, {{ adminData.adminfname_fld }} {{ adminData.adminmname_fld }}</span>
+      </div>
+      <button (click)="logoutAccount()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
 
+  <mat-toolbar>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

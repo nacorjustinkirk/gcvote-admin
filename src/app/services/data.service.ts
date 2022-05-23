@@ -8,7 +8,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  private url = 'https://api-gcevs.tech';
+  private url = 'http://localhost/voting-api';
 
   apiRequest(method: any, data: any) {
     return this.http.post(this.url + method, data)

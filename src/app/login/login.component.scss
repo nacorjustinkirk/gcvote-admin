@@ -1,63 +1,147 @@
-  html {
-   background-color: #FF9999 !important;
-   height: 665px;
+//   html {
+//    background-color: #FF9999 !important;
+//    height: 100vh;
    
-   .overlay {
-     position: absolute;
-     filter: grayscale(100%);
-     height: 100%;
-     width: 100%;
-     opacity: 25%;
-   }
-  }
+//    .overlay {
+//      position: absolute;
+//      filter: grayscale(100%);
+//      height: 100%;
+//      width: 100%;
+//      opacity: 25%;
+//    }
+//   }
   
-  h3 {
-    font-weight: bolder;
-    color: #FF9999;
-    margin-top: 10px;
-    margin-left: 315px;
+//   h3 {
+//     font-weight: bolder;
+//     color: #FF9999;
+//     margin-top: 10px;
+//     margin-left: 315px;
+//   }
+
+//   .mat-form-field {
+//     width: 100%;
+//     min-width: 200px; 
+//     font-size: 1.1rem;
+//     margin-top: 10px;
+//   }
+
+//   .emailField {
+//     margin-bottom: -20px;
+//   }
+
+//   .error {
+//     padding: 16px;
+//     width: 300px;
+//     color: white;
+//     background-color: red;
+//   }
+
+//   .mat-raised-button {
+//     display: flex;
+//     justify-content: center;
+//     width: 100%;
+//     min-width: 200px; 
+//     color: #fff;
+//   }
+
+// mat-card{
+//     top: 85px;
+//     width: 500px;
+//     height: 500px;
+//     display: block;
+//     margin-left:auto;
+//     margin-right:auto;  
+
+//     img {
+//         margin-top: 15px;
+//         height: 160px;
+//         width: 160px;
+//         margin-left: 150px;
+//         margin-bottom: 10px;
+//       }  
+// }
+.bg {
+  background: url('../../assets/school.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+
+  .color {
+    z-index: 1;
+    background-color: #FF9999 !important;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
   }
-
-  .mat-form-field {
-    width: 100%;
-    min-width: 200px; 
-    font-size: 1.1rem;
-    margin-top: 10px;
-  }
-
-  .emailField {
-    margin-bottom: -20px;
-  }
-
-  .error {
-    padding: 16px;
-    width: 300px;
-    color: white;
-    background-color: red;
-  }
-
-  .mat-raised-button {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 200px; 
-    color: #fff;
-  }
-
-mat-card{
-    top: 85px;
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin-left:auto;
-    margin-right:auto;  
-
-    img {
-        margin-top: 15px;
-        height: 160px;
-        width: 160px;
-        margin-left: 150px;
-        margin-bottom: 10px;
-      }  
 }
 
+form {
+  width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .title {
+    text-align: center;
+    margin-bottom: 50px;
+
+    span {
+      display: block;
+
+      &:nth-child(1){
+        font-size: 30px;
+        font-weight: 600;
+        color: #FF9999;
+        margin: 10px 0;
+      }
+
+      &:nth-child(2){
+        font-size: 18px;
+        font-weight: 500;
+        color: #808080;
+      }
+
+      &:nth-child(3){
+        font-size: 18px;
+        font-weight: 500;
+        color: #FF9999;
+        margin: 15px 0;
+      }
+    }
+  }
+
+  mat-form-field, button {
+    width: 100%;
+    margin: 5px 0;
+  
+    .hide-button {
+      background-color: #fff;
+      position: relative;
+      bottom: 5px;
+    }
+
+    input {
+      padding: 4px 24px;
+    }
+  }
+
+  .sign-in {
+    margin: 15px 0;
+    padding: 8px 14px;
+    font-weight: 500;
+  }
+
+  mat-error {
+    // position: absolute;
+    // bottom: 20px;
+    font-weight: 600;
+  }
+}

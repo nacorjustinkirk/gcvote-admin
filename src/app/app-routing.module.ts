@@ -7,17 +7,18 @@ import { ResultsComponent } from './main/results/results.component';
 import { VotersComponent } from './main/voters/voters.component';
 import { EnvironmentsComponent } from './main/environments/environments.component';
 import { CandidatesComponent } from './main/candidates/candidates.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent, children: [
-    { path: 'results', component: ResultsComponent},
-    { path: 'dashboard', component: DashboardComponent},
-    { path: 'voters', component: VotersComponent},
-    { path: 'environments', component: EnvironmentsComponent},
-    { path: 'candidates', component: CandidatesComponent},
+  { path: 'main', component: MainComponent, canActivate:[AuthGuard], children: [
+    { path: 'results', component: ResultsComponent, canActivate:[AuthGuard]},
+    { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+    { path: 'voters', component: VotersComponent, canActivate:[AuthGuard]},
+    { path: 'environments/:id', component: EnvironmentsComponent, canActivate:[AuthGuard]},
+    { path: 'candidates', component: CandidatesComponent, canActivate:[AuthGuard]},
   ] },
 ];
 

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { SessionService } from '../services/session.service';
 import { Router } from '@angular/router';
-import { AccountSettingsComponent } from '../dialogs/account-settings/account-settings.component';
-
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -15,42 +12,31 @@ export class MainComponent implements OnInit {
 
   gcvote: string = 'assets/gcvote.png';
   adminData: any = [];
+  token: any = '';
 
   constructor(
-    private session: SessionService,
-    private route:Router,
-    public dialog: MatDialog,
+    private sessionService: SessionService,
+    private router: Router,
     private dataService: DataService
     ) { }
 
-
   ngOnInit(): void {
-    // this.adminData = this.session.decodeData(0);
+    var data:any = this.sessionService.getSessionData();
+    this.token = this.sessionService.decodeData(data);
 
-    // console.log(this.adminData)
-
-    this.getAdminData();
+    this.dataService.apiRequest('/getadmin', { "adminid_fld": this.token.uid })
+    .subscribe((res: any) => {
+      this.adminData = res.payload[0];
+    })
   }
   
   logoutAccount() {
-    
-    this.session.setSession(null, false);
-   this.route.navigate(['login']);
+    this.sessionService.deleteData();
+    this.adminData = null;
+    this.router.navigate(['/login'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
-  accountSettings() {
-      const dialogRef = this.dialog.open(AccountSettingsComponent, {
-        width: '600px',
-      });
-    }
-
-    getAdminData() {
-      this.dataService.apiRequest('/getadmin', {}).subscribe(
-        (data: any) => {
-          this.adminData = data;
-          console.log(this.adminData);
-        }
-      )
-    }
-      
 }

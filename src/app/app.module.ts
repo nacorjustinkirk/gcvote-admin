@@ -20,15 +20,13 @@ import { EnvironmentsComponent } from './main/environments/environments.componen
 import { CandidatesComponent } from './main/candidates/candidates.component';
 import { CandidateDetailsComponent } from './dialogs/candidate-details/candidate-details.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { AccountSettingsComponent } from './dialogs/account-settings/account-settings.component';
-import { ForgotPasswordComponent } from './dialogs/forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 
 import { MaterialModules } from './material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -47,8 +45,6 @@ import { HttpClientModule } from '@angular/common/http';
     CandidatesComponent,
     CandidateDetailsComponent,
     DashboardComponent,
-    AccountSettingsComponent,
-    ForgotPasswordComponent,
     LoginComponent,
   ],
   imports: [
@@ -61,7 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

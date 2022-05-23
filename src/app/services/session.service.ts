@@ -1,32 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor(private route:Router) { }
-
-  setSession(data: any, status: boolean) {
-    const sessions = {
-      "index": data,
-      "session": status
-    };
-
-    sessionStorage.setItem('account', JSON.stringify(sessions));
-  }
-
-  // generateSalt() {
-  //   var salt = CryptoJS.lib.WordArray.random(128 / 8);
-  //   return CryptoJS.enc.Base64.stringify(salt);
-  // }
-
-  // generateToken(data: any) {
-  //   var JSONToString = JSON.stringify(data);
-  //   var base64ToEncode = btoa(JSONToString);
-  //   return base64ToEncode;
-  // }
+  constructor() { }
 
   decodeToken(data: any) {
     var base64ToParse = atob(data);
@@ -35,20 +14,29 @@ export class SessionService {
 
   encodeData(data: any) {
     var JSONToString = JSON.stringify(data);
-    sessionStorage.setItem('raw', JSONToString);
+    var base64ToEncode = btoa(JSONToString);
+    return base64ToEncode;
   }
 
   decodeData(data: any) {
-    var key: any = sessionStorage.key(1);
-    var data: any = sessionStorage.getItem(key);
-
     var base64ToParse = atob(data);
-    var parseToKey = JSON.parse(base64ToParse);
-    return JSON.parse(parseToKey);
+    return JSON.parse(base64ToParse);
+  }
+
+  uploadToSession(data: any) {
+    sessionStorage.setItem('raw', data);
+  }
+
+  getSessionData() {
+    return sessionStorage.getItem('raw');
   }
 
   deleteData() {
     sessionStorage.removeItem("raw");
+  }
+
+  searchSessionId() {
+    return sessionStorage.getItem('id');
   }
   
 }

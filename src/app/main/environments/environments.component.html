@@ -1,32 +1,54 @@
-<div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">
-      <h1>Environments</h1>
+<!-- <div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">
+    <h1>Environments</h1>
       <button mat-raised-button color="primary" (click)="addEnvironment()">Add Environment</button>
-      </div>
-    <div class="page__content shadow p-3 position-relative">
-      <!-- <div class="page__content-data position-absolute text-center">
-        Candidates Content Goes Here
-      </div> -->
-      <div>
+    </div>
+  <div class="page__content shadow p-3 position-relative">
+    <div>
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <mat-form-field class="searchBox" appearance="outline">
           <mat-label>Search</mat-label>
           <input matInput autocomplete="off">
           <mat-icon class="button" matSuffix>search</mat-icon>
         </mat-form-field>
-      </div>
-       <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/gridColumns) + '%'"  fxFlex.xs="100%" *ngFor="let num of [1, 2, 3, 5, 6, 7, 8]">
-    <!-- <mat-card class="mat-elevation-z4" (click)="createEnv()"> -->
-      <!-- <mat-card class="mat-elevation-z4" (click)="environmentDetails()"> -->
-    <mat-card type="button" class="mat-elevation-z4" routerLink="/main/candidates">
+    
+    <mat-card type="button" class="mat-elevation-z4" *ngFor="let env of envData">
       <mat-card-content>
         <img src="../../../../assets/ccs.png" width="105px">
-        <h2>GC-CCS Student Council</h2>
+        <h2>{{ env.envname_fld }}</h2>
           <h4>College of Computer Studies</h4>
       </mat-card-content>
     </mat-card>
     </div>
     </div>
   </div>
-  
+   -->
+
+<div class="container">
+  <div class="header">
+    <h1>Environments</h1>
+  </div>
+
+  <div class="content">
+    <div class="search-nav">
+      <!-- Add Student Dialog -->
+      <button class="add-student" (click)="addEnvironment(key)">Add Voting Environment</button>
+    </div>
+
+    <div class="card-container">
+      <div class="card" *ngFor="let env of envData">
+        <img src="../../../assets/ccs.png">
+        <div class="card-content">
+          <h2>{{ env.envname_fld }}</h2>
+          <h4>{{ getDepartmentName(env.envdept_fld) }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="dialog-empty" *ngIf="envData.length === 0">
+    Environment list is empty. Click 'Add Voting Environment'
+  </p>
+</div>
