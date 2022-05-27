@@ -9,6 +9,17 @@ interface Program {
     progName: string;
 }
 
+export const type = [
+    {
+        typeCode: 'single',
+        typeName: 'Single Vote'
+    },
+    {
+        typeCode: 'multi',
+        typeName: 'Multiple Vote'
+    }
+]
+
 export const department: Department[] = [
     {
         depCode: 'ALL',

@@ -1,30 +1,23 @@
-.full-width-input {
-    margin-top: 8px;
-    display: block;
+.form-container {
     width: 100%;
-    &:nth-child(1){
-        margin-top: 0;
-    }
-}
 
-.button-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 16px;
-    button {
-        margin-left: 8px;
-        &:nth-child(1) {
-            margin-left: 0;
+    .form-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        mat-form-field {
+            width: 100%;
+            margin: 0 5px;
+
+            &:nth-child(4) {
+                width: 150px;
+            }
+        }
+
+        button {
+            width: 100%;
+            margin: 0 5px;
         }
     }
-}
-
-mat-form-field {
-    font-size: 18px;
-}
-
-h1 {
-    font-weight: bolder;
-    color: #FF9999;
 }

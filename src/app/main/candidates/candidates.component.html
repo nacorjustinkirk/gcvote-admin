@@ -1,33 +1,46 @@
-<div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">
-      <h1>Candidates</h1>
-      <button mat-raised-button color="primary" class="back" routerLink="/main/environments">Back</button>
+<div class="container">
+  <div class="header">
+    <h1>Candidates</h1>
+    <div class="search-nav">
+      <!-- Add Student Dialog -->
+      <button (click)="addPosition(id)" matTooltip="Add Position" matTooltipClass="tooltip">
+        <mat-icon>how_to_reg</mat-icon>
+      </button>
+      <button (click)="deleteEnvironment()" [disabled]="positionData.length > 0" matTooltip="Delete Environment" matTooltipClass="tooltip">
+        <mat-icon>remove_from_queue</mat-icon>
+      </button>
+      <mat-slide-toggle [(ngModel)]="isChecked" (click)="updateVisibility()" matTooltip="Public View: {{ isChecked }}" matTooltipClass="tooltip"></mat-slide-toggle>
     </div>
-    <div class="page__content shadow p-3 position-relative">
-        <!-- <div class="page__content-data position-absolute text-center">
-          Candidates Content Goes Here
-        </div> -->
-        <div>
-        <button mat-stroked-button class="addPosition" (click)="addPosition()">Add Position</button>
-        <div class="container" *ngFor="let num of [1, 2]">
-        <mat-card class="positionCard">
-            <h1>President</h1>
-            <div class="positionButtons">
-                <button mat-button class="editPosition" (click)="editPosition()">Edit Position</button>
-                <button mat-button class="addCandidate" (click)="addCandidate()">Add Candidate</button>
-            </div>  
-        </mat-card>
-         <div fxLayout="row wrap" fxLayoutGap="16px grid">
-          <div [fxFlex]="(100/gridColumns) + '%'"  fxFlex.xs="100%" *ngFor="let num of [1, 2, 3, 5, 6, 7, 8]">
-      <!-- <mat-card class="mat-elevation-z4" (click)="createEnv()"> -->
-        <!-- <mat-card class="mat-elevation-z4" (click)="environmentDetails()"> -->
-      <mat-card type="button" class="mat-elevation-z4" (click)="candidateDetails()">
-        <mat-card-content>
-          <img src="../../../../assets/main.jpg" width="100px">
-          <h2>Simon Gerard Granil</h2>
-            <h4>IND</h4>
-        </mat-card-content>
-      </mat-card>
+  </div>
+
+  <div class="content">
+    <div class="candidates" *ngFor="let pos of positionData">
+      <div class="position">
+        <h2>{{ pos.posname_fld }}</h2>
+        <div class="button-content">  
+          <button (click)="addCandidate(id, pos.posid_fld)" matTooltip="Add Candidate" matTooltipClass="tooltip">
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button (click)="deletePosition(pos.posid_fld)" [disabled]="candidateData.length > 0" matTooltip="Delete Position" matTooltipClass="tooltip">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
       </div>
+      <div class="students" *ngFor="let cand of candidateData">
+        <div class="stud-info" *ngIf="cand.posid_fld == pos.posid_fld">
+          <img src="http://localhost/voting-api/request/img/{{ cand.studno_fld }}/2x2.jpg" width="75px">
+          <div class="stud-content">
+            <h2>{{ cand.studfname_fld }} {{ cand.studlname_fld }}</h2>
+            <h4>{{ cand.partylist_fld }}</h4>
+          </div>
+          <button (click)="deleteCandidate(cand.candidateid_fld, cand.studno_fld)"  matTooltip="Delete Candidate" matTooltipClass="tooltip">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
+    </div>  
+  </div>
+  <p class="dialog-empty" *ngIf="positionData.length === 0">
+    Voting Environment is empty, Add positions.
+  </p>
+</div>

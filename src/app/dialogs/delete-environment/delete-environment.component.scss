@@ -1,0 +1,33 @@
+.form-container {
+    width: 100%;
+
+    .form-group {
+        display: block;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FF9999;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #808080;
+        }
+
+        mat-form-field {
+            width: 100%;
+        }
+    }
+
+    .button-row {
+        display: flex;
+        align-items: center;
+        
+        button {
+            width: 100%;
+        }
+    }
+}

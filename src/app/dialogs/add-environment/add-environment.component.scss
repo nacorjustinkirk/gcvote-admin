@@ -1,23 +1,62 @@
 .form-container {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .form-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        mat-form-field {
-            width: 100%;
-            margin: 0 5px;
-
-            &:nth-child(4) {
-                width: 150px;
+    .contents {
+        margin: 0 5px;
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            mat-form-field {
+                width: 100%;
+                margin: 0 5px;
+    
+                // &:nth-child(4) {
+                //     width: 150px;
+                // }
+            }
+    
+            button {
+                width: 100%;
+                margin: 0 5px;
             }
         }
-
-        button {
-            width: 100%;
-            margin: 0 5px;
-        }
     }
+}
+
+.img-container {
+    text-align: center;
+    border: 1px solid #FF9999;
+    position: relative;
+    top: 0;
+    padding: 0 5px;
+    width: 180px;
+    height: 180px;
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        label {
+            color: #808080;
+            position: relative;
+            top: 80px;
+        }
+
+        #upload {
+            position: relative;
+            top: -10px;
+            opacity: 0;
+            width: 180px;
+            height: 160px;
+            cursor: pointer;
+        }
 }

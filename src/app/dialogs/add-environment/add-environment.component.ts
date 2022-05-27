@@ -17,16 +17,72 @@ export class AddEnvironmentComponent implements OnInit {
   department = department;
   clickedButton: boolean = false;
 
+  // Image 
+  url: string = '';
+  fileName: string = 'Insert Organization Logo';
+  files: any = '';
+
   constructor(public formBuilder: FormBuilder, private data: DataService, public dialog: MatDialog, public snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public fetch: any, private route: Router) {
     this.envForm = this.formBuilder.group({
       envname: new FormControl('', [Validators.required]),
       envdate: new FormControl('', [Validators.required]),
       envdept: new FormControl('', [Validators.required]),
+      base64: new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit(): void {
     console.log(this.generateEnvironmentCode());
+  }
+
+  getImage(data: any) {
+    if (data.target.files.length > 0) {
+      this.files = data.target.files[0];
+      if (this.checkImageFileSize(this.files)) {
+        if (this.checkImageFileType(this.files)) {
+          var img = new Image();
+          img.src = window.URL.createObjectURL(this.files);
+          img.onload = () => {
+            if (img.width === img.height) {
+              var reader = new FileReader();
+              reader.readAsDataURL(this.files);
+              reader.onload = (event: any) => {
+                this.envForm.patchValue({
+                  base64: event.target.result
+                })
+                this.url = this.envForm.value.base64;
+              }
+              this.fileName = '';
+            } else {
+              this.fileName = 'Oops! Remember that your image must be 2x2';
+              this.url = '';
+            }
+          }
+        } else {
+          this.fileName = 'Uploaded image must be jpeg or png';
+          this.url = '';
+        }
+      } else {
+        this.fileName = 'We only avail free hosting, so your image must be less than 2MB';
+        this.url = '';
+      }
+    }
+  }
+
+  checkImageFileSize(file: File): boolean {
+    if (file.size > 2000000) {
+        return false;
+    } else {
+        return true;
+    }
+  }
+
+  checkImageFileType(file: File): boolean {
+    if (file.type === 'image/png' || file.type === 'image/jpeg') {
+        return true;
+    } else {
+        return false;
+    }
   }
 
   add() {
@@ -37,22 +93,24 @@ export class AddEnvironmentComponent implements OnInit {
       envdate_fld: this.envForm.value.envdate,
       envdept_fld: this.envForm.value.envdept,
       date_created: new Date().toISOString(),
-      archived: 0,
+      view_fld: false,
     }
 
     this.data.apiRequest('/addenv', data)
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
+        this.data.apiRequest('/uploadimg', {
+          'id': data.envid_fld,
+          'img': this.envForm.value.base64,
+        })
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+        
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
         });
         this.dialog.closeAll();
-        setTimeout(() => {  
-          this.route.navigate([`main/environments/${this.fetch.key}`])
-          .then(() => {
-            window.location.reload();
-          });
-        }, 2000);
       } else {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
@@ -84,5 +142,5 @@ interface Environment {
   envdate_fld: string;
   envdept_fld: string;
   date_created: string;
-  archived: number;
+  view_fld: boolean;
 }

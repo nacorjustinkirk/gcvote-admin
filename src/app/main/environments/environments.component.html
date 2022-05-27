@@ -39,8 +39,8 @@
     </div>
 
     <div class="card-container">
-      <div class="card" *ngFor="let env of envData">
-        <img src="../../../assets/ccs.png">
+      <div class="card" *ngFor="let env of envData" (click)="external(env.envid_fld)">
+        <img src="http://localhost/voting-api/request/img/{{ env.envid_fld }}/2x2.jpg">
         <div class="card-content">
           <h2>{{ env.envname_fld }}</h2>
           <h4>{{ getDepartmentName(env.envdept_fld) }}</h4>

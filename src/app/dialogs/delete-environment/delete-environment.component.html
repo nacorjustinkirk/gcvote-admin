@@ -1,0 +1,13 @@
+<form [formGroup]="envForm" (ngSubmit)="envForm.valid" class="form-container">
+    <div class="form-group">
+        <h1>Are you sure?</h1>
+        <p>Retype the <strong>Voting Environment Code</strong> to proceed.</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm Code</mat-label>
+            <input matInput required formControlName="code" placeholder="Your code" >
+        </mat-form-field>
+    </div>
+    <div class="button-row">
+        <button mat-raised-button type="submit" color="primary" [disabled]="!envForm.valid || clickedButton" (click)="delete(); clickedButton = true">Delete Student</button>
+    </div>
+</form>

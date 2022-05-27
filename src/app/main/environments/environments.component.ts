@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AddEnvironmentComponent } from 'src/app/dialogs/add-environment/add-environment.component';
-import { EnvironmentDetailsComponent } from 'src/app/dialogs/environment-details/environment-details.component';
 import { DataService } from 'src/app/services/data.service';
 import { department } from './../../services/offerings.service';
 
@@ -21,13 +20,16 @@ export class EnvironmentsComponent implements OnInit {
     public dialog: MatDialog,
     private data: DataService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.data.apiRequest('/getenv', { "adminid_fld": this.key })
-    .subscribe((res: any) => {
-        this.envData = res.payload;
-    });
+    setInterval(() => {
+      this.data.apiRequest('/getenv', { "adminid_fld": this.key })
+      .subscribe((res: any) => {
+          this.envData = res.payload;
+      });
+    }, 1000)
   }
 
   getDepartmentName(code: string) {
@@ -36,16 +38,18 @@ export class EnvironmentsComponent implements OnInit {
 
   addEnvironment(data: any){
     const dialogRef = this.dialog.open(AddEnvironmentComponent, {
-      width: '600px',
+      width: '700px',
       data: {
         key: data
       }
     });
   }
+  
+  external(id: any) {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/candidates', id])
+    );
 
-  environmentDetails(){
-    const dialogRef = this.dialog.open(EnvironmentDetailsComponent, {
-      width: '600px',
-    });
+    window.open(url, '_blank');
   }
 }

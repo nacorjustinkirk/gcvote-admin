@@ -50,3 +50,20 @@ h6 {
 input {
   -webkit-user-select: all !important;
 }
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-content: center;
+  align-items: center;
+
+  .col {
+    grid-column: span 6;
+    opacity: 0;
+    transition: all 1s ease 0s;
+  }
+}
+
+.tooltip {
+  font-size: 12px;
+}

@@ -1,24 +1,33 @@
-<h1>Add Position</h1>
-
-<form (ngSubmit)="addPosition()">
-    <mat-form-field class="full-width-input" color="primary">
-        <input matInput placeholder="Position" value="" name="Name" required>
-    </mat-form-field>
-    <mat-form-field class="full-width-input" color="primary">
-        <input matInput placeholder="Partylist" value="" name="Name" required>
-    </mat-form-field>
-    <mat-form-field class="full-width-input" color="primary">
-        <mat-label>Department</mat-label>
-        <mat-select name="department" required >
-            <mat-option>
-                CCS
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <div class="button-wrapper">
-        <!-- <button mat-stroked-button type="button" color="accent" (click)="closeDialog()">Cancel</button> -->
-        <button mat-stroked-button type="button" color="primary"(click)="closeDialog()">Cancel</button>
-        <button mat-raised-button type="submit" color="primary" (click)="addPosition()">Add</button>
+<form [formGroup]="positionForm" (ngSubmit)="positionForm.valid" class="form-container">
+    <div class="form-group">
+        <mat-form-field appearance="fill">
+            <mat-label>Position Name</mat-label>
+            <input matInput formControlName="positionname" required placeholder="Ex. President, Vice President">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Position Code</mat-label>
+            <input matInput formControlName="positioncode" required placeholder="Code of your Position">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+       <mat-form-field appearance="fill">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="department">
+                <mat-option *ngFor="let dept of department" [value]="dept.depCode">
+                    {{ dept.depName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Voting Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option *ngFor="let typ of type" [value]="typ.typeCode">
+                    {{ typ.typeName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <button mat-raised-button type="submit" color="primary" [disabled]="!positionForm.valid || clickedButton" (click)="add(); clickedButton = true">Add Position</button>
     </div>
 </form>
-

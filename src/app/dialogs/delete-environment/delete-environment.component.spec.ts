@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddVoterComponent } from './add-voter.component';
+import { DeleteEnvironmentComponent } from './delete-environment.component';
 
-describe('AddVoterComponent', () => {
-  let component: AddVoterComponent;
-  let fixture: ComponentFixture<AddVoterComponent>;
+describe('DeleteEnvironmentComponent', () => {
+  let component: DeleteEnvironmentComponent;
+  let fixture: ComponentFixture<DeleteEnvironmentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddVoterComponent ]
+      declarations: [ DeleteEnvironmentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddVoterComponent);
+    fixture = TestBed.createComponent(DeleteEnvironmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
