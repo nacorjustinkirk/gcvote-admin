@@ -7,14 +7,14 @@
       <hr color="#FF9999" width="200px">
     </div>
     <ul>
-      <li routerLinkActive="list-item-active" routerLink="/main/dashboard">
-        <mat-icon>dashboard</mat-icon>
-        <span>Dashboard</span>
+      <li routerLinkActive="list-item-active" routerLink="/main/news">
+        <mat-icon>forum</mat-icon>
+        <span>News</span>
       </li>
-      <li routerLinkActive="list-item-active" routerLink="/main/results">
+      <!-- <li routerLinkActive="list-item-active" routerLink="/main/results">
         <mat-icon>leaderboard</mat-icon>
         <span>Results</span>
-      </li>
+      </li> -->
       <li routerLinkActive="list-item-active" [routerLink]="['/main/environments', adminData.adminid_fld]">
         <mat-icon>where_to_vote</mat-icon>
         <span>Environments</span>

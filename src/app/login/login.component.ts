@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         if (res.status.remarks == 'success') {
           this.session.uploadToSession(res.payload);
-          this.route.navigate(['main/dashboard'])
+          this.route.navigate(['main/news'])
           .then(() => {
             window.location.reload();
           });

@@ -29,7 +29,7 @@ export class CandidatesComponent implements OnInit {
   message = '';
 
   ngOnInit(): void {
-    setInterval(() => {
+    // setInterval(() => {
       this.data.apiRequest('/getposition', { "envid_fld": this.id })
       .subscribe((res: any) => {
         if (res.status.remarks === 'success') {
@@ -42,7 +42,7 @@ export class CandidatesComponent implements OnInit {
           this.candidateData = res.payload;
         } 
       });
-    }, 1000)
+    // }, 500)
   }
 
   updateVisibility() {
@@ -72,7 +72,7 @@ export class CandidatesComponent implements OnInit {
 
   addPosition (id: any) {
     this.dialog.open(AddPositionComponent, {
-      width: '600px',
+      width: '800px',
       data: {
         envid: id
       }

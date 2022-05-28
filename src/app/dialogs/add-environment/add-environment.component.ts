@@ -93,7 +93,7 @@ export class AddEnvironmentComponent implements OnInit {
       envdate_fld: this.envForm.value.envdate,
       envdept_fld: this.envForm.value.envdept,
       date_created: new Date().toISOString(),
-      view_fld: false,
+      view_fld: true,
     }
 
     this.data.apiRequest('/addenv', data)

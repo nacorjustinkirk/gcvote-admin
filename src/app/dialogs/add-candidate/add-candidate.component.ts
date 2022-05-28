@@ -1,10 +1,10 @@
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from './../../services/data.service';
 import { department } from './../../services/offerings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-candidate',
@@ -17,7 +17,7 @@ export class AddCandidateComponent implements OnInit {
   clickedButton: boolean = false;
   department = department;
 
-  constructor(private formBuilder: FormBuilder, private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private fetch: any, private data: DataService, private snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private fetch: any, private data: DataService, private snackBar: MatSnackBar, private route: Router) {
     this.candidateForm = this.formBuilder.group({
       studno: new FormControl('', [Validators.required]),
       party: new FormControl('', [Validators.required]),
@@ -105,6 +105,12 @@ export class AddCandidateComponent implements OnInit {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
         });
+        setTimeout(() => {
+          this.route.navigate(['/candidates', this.fetch.envid])
+          .then(() => {
+            window.location.reload();
+          });
+        }, 2000);
         this.dialog.closeAll();
       } else {
         this.snackBar.open(res.status.message, '', {

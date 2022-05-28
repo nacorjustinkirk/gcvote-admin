@@ -13,7 +13,6 @@ import { ResultsComponent } from './main/results/results.component';
 import { AddEnvironmentComponent } from './dialogs/add-environment/add-environment.component';
 import { EnvironmentsComponent } from './main/environments/environments.component';
 import { CandidatesComponent } from './main/candidates/candidates.component';
-import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 import { MaterialModules } from './material.module';
@@ -22,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { DeleteEnvironmentComponent } from './dialogs/delete-environment/delete-environment.component';
+import { NewsComponent } from './main/news/news.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +33,9 @@ import { DeleteEnvironmentComponent } from './dialogs/delete-environment/delete-
     AddEnvironmentComponent,
     EnvironmentsComponent,
     CandidatesComponent,
-    DashboardComponent,
     LoginComponent,
     DeleteEnvironmentComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,9 +28,9 @@
    -->
 
 <div class="container">
-  <div class="header">
-    <h1>Environments</h1>
-  </div>
+    <div class="header">
+      <h1>Environments</h1>
+    </div>
 
   <div class="content">
     <div class="search-nav">
@@ -40,7 +40,7 @@
 
     <div class="card-container">
       <div class="card" *ngFor="let env of envData" (click)="external(env.envid_fld)">
-        <img src="http://localhost/voting-api/request/img/{{ env.envid_fld }}/2x2.jpg">
+        <img src="https://api-gcevs.tech/voting/request/img/{{ env.envid_fld }}/2x2.jpg">
         <div class="card-content">
           <h2>{{ env.envname_fld }}</h2>
           <h4>{{ getDepartmentName(env.envdept_fld) }}</h4>
