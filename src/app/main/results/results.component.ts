@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -10,11 +10,12 @@ import { DataService } from 'src/app/services/data.service';
 export class ResultsComponent implements OnInit {
 
   envData: any = [];
+  key: any = this.router.snapshot.paramMap.get('id');
 
-  constructor(private data: DataService, private route: Router) { }
+  constructor(private data: DataService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.data.apiRequest('/getenv', { "adminid_fld": null })
+    this.data.apiRequest('/getenvadmin', { "adminid_fld": this.key })
     .subscribe((res: any) => {
         this.envData = res.payload;
     }); 

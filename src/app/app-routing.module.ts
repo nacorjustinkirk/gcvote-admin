@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent, canActivate:[AuthGuard], children: [
-    { path: 'results', component: ResultsComponent, canActivate:[AuthGuard]},
+    { path: 'results/:id', component: ResultsComponent, canActivate:[AuthGuard]},
     { path: 'news', component: NewsComponent, canActivate:[AuthGuard]},
     { path: 'environments/:id', component: EnvironmentsComponent, canActivate:[AuthGuard]},
   ] },

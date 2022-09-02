@@ -15,7 +15,7 @@
         <mat-icon>where_to_vote</mat-icon>
         <span>Environments</span>
       </li>
-      <li routerLinkActive="list-item-active" routerLink="/main/results">
+      <li routerLinkActive="list-item-active" [routerLink]="['/main/results', adminData.adminid_fld]">
         <mat-icon>leaderboard</mat-icon>
         <span>Results</span>
       </li>

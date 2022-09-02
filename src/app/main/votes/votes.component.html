@@ -21,7 +21,7 @@
         <div class="position">
             <h2>{{ pos.posname_fld }}</h2>
         </div>
-        <div class="students" *ngFor="let cand of candidateData">
+        <div class="students" *ngFor="let cand of candidateData" >
             <div class="stud-info" *ngIf="cand.posid_fld == pos.posid_fld">
                 <img src="http://localhost/voting-api/request/img/{{ cand.studno_fld }}/{{ cand.studno_fld }}.jpg" width="75px">
                 <div class="result-content">
@@ -30,7 +30,8 @@
                         <h4>({{ cand.partylist_fld }})</h4>
                     </div>
                     <h1>    
-                        <strong>{{ countNumberOfVotes(cand.candidateid_fld) }} votes</strong>
+                        <!-- <strong>{{ countNumberOfVotes(cand.candidateid_fld) }} votes</strong> -->
+                        <strong>{{ cand.numOfVotes }} votes</strong>
                     </h1>
                 </div>
             </div>

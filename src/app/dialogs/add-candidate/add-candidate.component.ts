@@ -95,7 +95,6 @@ export class AddCandidateComponent implements OnInit {
         this.data.apiRequest('/getstudent', { studno_fld: event.target.value })
         .subscribe((res: any) => {
           if (res.status.remarks === 'success') {
-          
             this.resultValue = `Candidate Name: ${res.payload[0].studfname_fld} ${res.payload[0].studlname_fld} `
             this.ccsClassValidator = 'valid-candidate';
           } else {
@@ -105,6 +104,8 @@ export class AddCandidateComponent implements OnInit {
           this.validCandidate = res.status.remarks;
         })
       }, 2000)
+    } else {
+      this.resultValue = ``
     }
   }
 

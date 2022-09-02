@@ -11,6 +11,11 @@ interface Program {
 
 export const department = [
     {
+        depCode: 'ALL',
+        depName: 'Gordon College',
+        programs: []
+    },
+    {
         depCode: 'CAHS',
         depName: 'College of Allied Health Studies',
         programs: [

@@ -24,10 +24,12 @@ export class EnvironmentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data.apiRequest('/getenv', { "adminid_fld": this.key })
+    this.data.apiRequest('/getenvadmin', { "adminid_fld": this.key })
     .subscribe((res: any) => {
         this.envData = res.payload;
     });
+
+    console.log(this.key)
   }
 
   getDepartmentName(code: string) {

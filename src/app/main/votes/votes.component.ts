@@ -16,7 +16,7 @@ export class VotesComponent implements OnInit {
   positionData: any = [];
   candidateData: any = [];
   studentData: any = [];
-  votes: any = []
+  votes: any = [];
   voteData: any = new Array();
 
   department = department;
@@ -35,10 +35,44 @@ export class VotesComponent implements OnInit {
           this.positionData = res.payload;
         } 
       });
+    this.data.apiRequest('/getvotes', { "envid_fld": this.id })
+    .subscribe((res: any) => {
+      if (res.status.remarks == 'success') {
+          this.votes = res.payload;
+
+          for (let i = 0; i < this.votes.length; i++) {
+            var data = atob(res.payload[i].votedata_fld);
+            var obj = JSON.parse(data);
+            this.voteData.push(obj);
+          }
+        }
+      });
     this.data.apiRequest('/getcandidate', { "envid_fld": this.id })
       .subscribe((res: any) => {
         if (res.status.remarks == 'success') {
-          this.candidateData = res.payload;
+          let temp: any = [];
+
+          for (var i = 0; i < res.payload.length; i++) {
+            var votes: Count = {
+              studno_fld: res.payload[i].studno_fld,
+              posid_fld: res.payload[i].posid_fld,
+              candidateid_fld: res.payload[i].candidateid_fld,
+              studfname_fld: res.payload[i].studfname_fld,
+              studlname_fld: res.payload[i].studlname_fld,
+              partylist_fld: res.payload[i].partylist_fld,
+              numOfVotes: this.countNumberOfVotes(res.payload[i].candidateid_fld),
+            }
+
+            temp.push(votes);
+          }
+
+          temp.sort((a: any, b: any) => {
+            return b.numOfVotes - a.numOfVotes;
+          })
+
+          temp.forEach((e: any) => {
+            this.candidateData.push(e);
+          });
         } 
     });
     this.data.apiRequest('/getstudent', { "studno_fld": null })
@@ -47,20 +81,14 @@ export class VotesComponent implements OnInit {
           this.studentData = res.payload;
         }
     });
-    
-      this.data.apiRequest('/getvotes', { "envid_fld": this.id })
-      .subscribe((res: any) => {
-        if (res.status.remarks == 'success') {
-            this.votes = res.payload;
-
-            for (let i = 0; i < this.votes.length; i++) {
-              var data = atob(res.payload[i].votedata_fld);
-              var obj = JSON.parse(data);
-              this.voteData.push(obj);
-            }
-          }
-      });
   }
+
+  // sortCandidateByNumberOfVotes() {
+  //   this.candidateData.sort((a: any, b: any) => {
+  //     console.log(a.countNumberOfVotes - b.countNumberOfVotes);
+  //   });
+  // }
+
 
   getDepartmentName(code: string) {
     return this.department.find(x => x.depCode === code)?.depName;
@@ -86,7 +114,7 @@ export class VotesComponent implements OnInit {
     var count = 0;
     for (let i = 0; i < this.voteData.length; i++) {
       for (let j = 0; j < this.voteData[i].length; j++) {
-        if (this.voteData[i][j]['candidate'] == candidate) {
+        if (this.voteData[i][j]['candidateid_fld'] == candidate) {
           count++;
         }
       }
@@ -112,11 +140,22 @@ export class VotesComponent implements OnInit {
   countStudentsPerDepartment() {
     let count = 0;
     for (let i = 0; i < this.studentData.length; i++) {
-      if (this.studentData[i].studdept_fld == this.envData.envdept_fld) {
+      if (this.studentData[i].studdept_fld == this.envData.envdept_fld || this.envData.envdept_fld == 'ALL') {
         count++;
       }
     }
     return count;
   }
 
+}
+
+
+interface Count {
+  studno_fld: number;
+  posid_fld: number;
+  candidateid_fld: number;
+  studfname_fld: string;
+  studlname_fld: string;
+  partylist_fld: string;
+  numOfVotes: number;
 }
