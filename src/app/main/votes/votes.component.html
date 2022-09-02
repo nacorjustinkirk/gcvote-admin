@@ -1,0 +1,40 @@
+<div class="header">
+    <div class="head-info">
+        <h1>{{ envData.envname_fld }}</h1>
+        <h3>{{ getDepartmentName(envData.envdept_fld) }}</h3>
+    </div>
+    <div class="result-info">
+        <p>
+            <strong>{{ calculateElectionReturns(countStudentsPerDepartment()) }}%</strong> of Election Returns
+        </p>
+        <p>
+            As of <strong>{{ toLocaleDate() }}</strong>, <strong>{{ toLocaleTime() }}</strong>
+        </p>
+        <p>
+            <i>Source: https://api-gcevs.tech</i> 
+        </p>
+    </div>
+</div>
+
+<div class="content">
+    <div class="candidates" *ngFor="let pos of positionData">
+        <div class="position">
+            <h2>{{ pos.posname_fld }}</h2>
+        </div>
+        <div class="students" *ngFor="let cand of candidateData">
+            <div class="stud-info" *ngIf="cand.posid_fld == pos.posid_fld">
+                <img src="http://localhost/voting-api/request/img/{{ cand.studno_fld }}/{{ cand.studno_fld }}.jpg" width="75px">
+                <div class="result-content">
+                    <div class="stud-content">
+                        <h2>{{ cand.studfname_fld }} {{ cand.studlname_fld }}</h2>
+                        <h4>({{ cand.partylist_fld }})</h4>
+                    </div>
+                    <h1>    
+                        <strong>{{ countNumberOfVotes(cand.candidateid_fld) }} votes</strong>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

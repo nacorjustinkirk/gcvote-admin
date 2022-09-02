@@ -17,6 +17,12 @@ export class AddCandidateComponent implements OnInit {
   clickedButton: boolean = false;
   department = department;
 
+  studno: any = '';
+  validCandidate: any = '';
+  resultValue: any = '';
+  ccsClassValidator: any = '';
+  messageValidator: any = '';
+
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private fetch: any, private data: DataService, private snackBar: MatSnackBar, private route: Router) {
     this.candidateForm = this.formBuilder.group({
       studno: new FormControl('', [Validators.required]),
@@ -83,6 +89,25 @@ export class AddCandidateComponent implements OnInit {
     }
   }
 
+  search(event: any) {
+    if (event.target.value.length === 9) {
+      setTimeout(() => {
+        this.data.apiRequest('/getstudent', { studno_fld: event.target.value })
+        .subscribe((res: any) => {
+          if (res.status.remarks === 'success') {
+          
+            this.resultValue = `Candidate Name: ${res.payload[0].studfname_fld} ${res.payload[0].studlname_fld} `
+            this.ccsClassValidator = 'valid-candidate';
+          } else {
+            this.resultValue = `Candidate not found!`
+            this.ccsClassValidator = 'invalid-candidate';
+          }
+          this.validCandidate = res.status.remarks;
+        })
+      }, 2000)
+    }
+  }
+
   add() {
     const data: Candidate = {
       envid_fld: this.fetch.envid,
@@ -100,7 +125,7 @@ export class AddCandidateComponent implements OnInit {
           'img': this.candidateForm.value.base64,
         })
         .subscribe((res: any) => {
-          console.log(res);
+          // console.log(res);
         });
         this.snackBar.open(res.status.message, '', {
           duration: 5000,

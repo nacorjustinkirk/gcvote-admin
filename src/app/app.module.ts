@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { DeleteEnvironmentComponent } from './dialogs/delete-environment/delete-environment.component';
 import { NewsComponent } from './main/news/news.component';
+import { VotesComponent } from './main/votes/votes.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NewsComponent } from './main/news/news.component';
     LoginComponent,
     DeleteEnvironmentComponent,
     NewsComponent,
+    VotesComponent,
   ],
   imports: [
     BrowserModule,

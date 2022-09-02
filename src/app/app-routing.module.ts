@@ -5,8 +5,10 @@ import { MainComponent } from './main/main.component';
 import { ResultsComponent } from './main/results/results.component';
 import { EnvironmentsComponent } from './main/environments/environments.component';
 import { CandidatesComponent } from './main/candidates/candidates.component';
+import { VotesComponent } from './main/votes/votes.component';
 import { NewsComponent } from './main/news/news.component';
 import { AuthGuard } from './guard/auth.guard';
+
 
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
     { path: 'environments/:id', component: EnvironmentsComponent, canActivate:[AuthGuard]},
   ] },
   { path: 'candidates/:id', component: CandidatesComponent, canActivate:[AuthGuard]},
+  { path: 'votes/:id', component: VotesComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

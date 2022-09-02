@@ -1,32 +1,3 @@
-<!-- <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">
-    <h1>Environments</h1>
-      <button mat-raised-button color="primary" (click)="addEnvironment()">Add Environment</button>
-    </div>
-  <div class="page__content shadow p-3 position-relative">
-    <div>
-      <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <mat-form-field class="searchBox" appearance="outline">
-          <mat-label>Search</mat-label>
-          <input matInput autocomplete="off">
-          <mat-icon class="button" matSuffix>search</mat-icon>
-        </mat-form-field>
-    </div>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div [fxFlex]="(100/gridColumns) + '%'"  fxFlex.xs="100%" *ngFor="let num of [1, 2, 3, 5, 6, 7, 8]">
-    
-    <mat-card type="button" class="mat-elevation-z4" *ngFor="let env of envData">
-      <mat-card-content>
-        <img src="../../../../assets/ccs.png" width="105px">
-        <h2>{{ env.envname_fld }}</h2>
-          <h4>College of Computer Studies</h4>
-      </mat-card-content>
-    </mat-card>
-    </div>
-    </div>
-  </div>
-   -->
-
 <div class="container">
     <div class="header">
       <h1>Environments</h1>
@@ -40,7 +11,8 @@
 
     <div class="card-container">
       <div class="card" *ngFor="let env of envData" (click)="external(env.envid_fld)">
-        <img src="https://api-gcevs.tech/voting/request/img/{{ env.envid_fld }}/2x2.jpg">
+        <!-- <img src="https://api-gcevs.tech/voting/request/img/{{ env.envid_fld }}/2x2.jpg"> -->
+        <img src="http://localhost/voting-api/request/img/{{ env.envid_fld }}/{{ env.envid_fld }}.jpg">
         <div class="card-content">
           <h2>{{ env.envname_fld }}</h2>
           <h4>{{ getDepartmentName(env.envdept_fld) }}</h4>

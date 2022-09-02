@@ -11,13 +11,13 @@
         <mat-icon>forum</mat-icon>
         <span>News</span>
       </li>
-      <!-- <li routerLinkActive="list-item-active" routerLink="/main/results">
-        <mat-icon>leaderboard</mat-icon>
-        <span>Results</span>
-      </li> -->
       <li routerLinkActive="list-item-active" [routerLink]="['/main/environments', adminData.adminid_fld]">
         <mat-icon>where_to_vote</mat-icon>
         <span>Environments</span>
+      </li>
+      <li routerLinkActive="list-item-active" routerLink="/main/results">
+        <mat-icon>leaderboard</mat-icon>
+        <span>Results</span>
       </li>
     </ul>
     <div class="user-container">

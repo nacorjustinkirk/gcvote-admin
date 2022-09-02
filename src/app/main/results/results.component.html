@@ -1,28 +1,80 @@
-<div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">
-    <h1>Results</h1>
-  </div>
-  <div class="page__content shadow p-3 position-relative">
-    <!-- <div class="page__content-data position-absolute text-center">
-      Candidates Content Goes Here
-    </div> -->
-    <div class="container" *ngFor="let num of [1, 2, 3]">
-    <mat-card class="positionCard" >
-      <h1 class="position">President</h1>
-    </mat-card>
-    <div fxLayout="column" fxLayoutGap="8px grid">
-      <div [fxFlex]="(100/gridColumns) + '%'"  fxFlex.xs="100%">
-        <mat-card class="mat-elevation-z4">
-          <mat-card-content>
-              <img  class="candidateImage" src="../../../../assets/main.jpg" width="100px">
-              <div class="candidateInfo">
-              <h2>Simon Granil</h2>
-              <h3>IND</h3>
-              <h1>3,000</h1>
-              <mat-progress-bar color="accent" mode="determinate" value="69"></mat-progress-bar>
+<div class="container">
+  
+  <div class="content">
+    <div class="table-container">
+
+      <div class="search-nav">
+        <!-- Add Student Dialog -->
+        <!-- <button class="add-student" (click)="addStudentDialog()">Add Students</button> -->
+
+        <!-- Search Input -->
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Search by Last Name</mat-label>
+          <input matInput placeholder="Enter Student Credential" (keyup)="searchName($event)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field> -->
+      </div>
+
+      
+
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <button>
+                Environment Name 
+                <mat-icon>unfold_more</mat-icon>
+                <input type="checkbox">
+              </button> 
+            </th>
+            <th>
+              <button>
+                Election Date
+                <mat-icon>unfold_more</mat-icon>
+                <input type="checkbox">
+              </button>
+            </th>
+            <th>
+              <button>
+                Department
+                <mat-icon>unfold_more</mat-icon>
+                <input type="checkbox">
+              </button> 
+            </th>
+            <th>
+              Date Created
+            </th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor="let env of envData">
+            <td>
+              <h2>{{ env.envname_fld }}</h2>
+            </td>
+            <td>
+              <h4>{{ dateString(env.envdate_fld) }}</h4>
+            </td>
+            <td>
+              <div class="{{ env.envdept_fld }} badge">
+                <span>{{ env.envdept_fld }}</span>
               </div>
-          </mat-card-content>
-        </mat-card>
+            </td>
+            <td>
+              <span>{{ dateString(env.date_created) }}</span>
+            </td>
+            <td>
+              <button (click)="external(env.envid_fld)">
+                <mat-icon>launch</mat-icon>
+                Check Result
+              </button>
+            </td>
+          </tr>
+      </table>
     </div>
+    <p class="dialog-empty" *ngIf="envData.length === 0">
+      Result list is empty.
+    </p>
   </div>
 </div>

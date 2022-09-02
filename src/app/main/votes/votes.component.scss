@@ -1,0 +1,141 @@
+.header {
+    background: rgb(63,81,181);
+    // background: radial-gradient(circle, rgba(63,81,181,1) 0%, rgba(63,81,181,1) 0%, rgba(9,9,121,1) 100%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+
+    .head-info {
+        color: #fff;
+        position: relative;
+        top: 5px;
+
+        h1 {
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 0.6;   
+        }
+
+        h3 {
+            line-height: 0;
+        }
+    }
+
+    .result-info {
+        color: #fff;
+        position: relative;
+        top: 3px;
+
+        p {
+            line-height: 0.5;
+            text-align: right;
+        }
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 50px 75px;
+
+    .candidates {
+        color: #fff;
+        grid-column: span 6;
+        transition: all 1s ease 0s;
+        margin: 0 10px;
+  
+        .position {
+            background-color: rgb(63,81,181);
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            h2 {
+                color: #fff;
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin: 0;
+            }
+        }
+    }
+
+    .students {
+        margin: 10px 0;
+  
+        .stud-info {
+            position: relative;
+            top: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+    
+            img {
+                border-radius: 100px;
+            }
+    
+            button {
+                border: none;
+                background-color: transparent;
+                vertical-align: middle;
+                cursor: pointer;
+                position: absolute;
+                right: 30px;
+    
+                mat-icon {
+                    font-size: 1.5rem;
+                    color: #444F5A;
+                }
+            }
+
+            .result-content {
+                display: flex;
+                flex-direction: column;
+                margin-left: 20px;
+
+                h1 {
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    margin: 0;
+                    color: rgb(63,81,181);
+                }
+
+                .stud-content {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+      
+                    h2 {
+                        margin: 0;
+                        color: #444F5A;
+                        font-size: 1.25rem;
+                        font-weight: 500;
+                    }
+            
+                    h4 {
+                        margin: 0 10px;
+                        color: #444F5A;
+                        font-size: 1rem;
+                        list-style: 0;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .content {
+        padding: 25px 25px;
+        .candidates {
+            grid-column: span 12;
+        }
+    }
+}

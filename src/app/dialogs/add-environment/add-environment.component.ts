@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { department } from './../../services/offerings.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddEnvironmentComponent implements OnInit {
   fileName: string = 'Insert Organization Logo';
   files: any = '';
 
-  constructor(public formBuilder: FormBuilder, private data: DataService, public dialog: MatDialog, public snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public fetch: any, private route: Router) {
+  constructor(public formBuilder: FormBuilder, private data: DataService, public dialog: MatDialog, public snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public fetch: any, private route: Router, public dialogRef: MatDialogRef<AddEnvironmentComponent>) {
     this.envForm = this.formBuilder.group({
       envname: new FormControl('', [Validators.required]),
       envdate: new FormControl('', [Validators.required]),
@@ -31,9 +31,7 @@ export class AddEnvironmentComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.generateEnvironmentCode());
-  }
+  ngOnInit(): void { }
 
   getImage(data: any) {
     if (data.target.files.length > 0) {
@@ -104,13 +102,12 @@ export class AddEnvironmentComponent implements OnInit {
           'img': this.envForm.value.base64,
         })
         .subscribe((res: any) => {
-          console.log(res);
+          // console.log(res);
         });
-        
+        this.dialogRef.close({ data: data });
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
         });
-        this.dialog.closeAll();
       } else {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,

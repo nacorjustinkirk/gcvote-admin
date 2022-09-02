@@ -9,12 +9,46 @@
         width: 50%;
 
         mat-form-field {
-            width: 100%;
+            width: 100% !important;
 
             &:nth-child(4) {
                 width: 150px;
             }
+            
+            .loaders {
+                position: absolute;
+                bottom: 13px;
+                right: 10px;
+
+                .valid-icon {
+                    color: #008f28;
+                }
+
+                .invalid-icon {
+                    color: rgb(255, 0, 0);
+                }
+            }
         }
+            
+        .valid-candidate {
+            font-weight: 600;
+            font-size: 12px;
+            color: #008f28;
+            position: absolute;
+            top: 285px;
+            margin: 15px;
+        }
+
+        .invalid-candidate {
+            font-weight: 600;
+            font-size: 12px;
+            color: #ff0000;
+            position: absolute;
+            top: 285px;
+            margin: 15px;
+        }
+
+        
 
         button {
             width: 100%;
@@ -54,4 +88,13 @@
             height: 160px;
             cursor: pointer;
         }
+}
+
+
+.appear {
+    display: block;
+}
+
+.hide {
+    display: none;
 }

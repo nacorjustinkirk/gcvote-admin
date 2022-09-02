@@ -54,13 +54,13 @@ export class AddPositionComponent implements OnInit {
         this.snackBar.open(res.status.message, '', {
           duration: 3000,
         });
-        this.dialogRef.close();
+        // this.dialogRef.close({ data: data });
         setTimeout(() => {
           this.route.navigate(['/candidates', this.fetch.envid])
           .then(() => {
             window.location.reload();
           });
-        }, 2000);
+        }, 1000);
       } else {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-delete-environment',
@@ -15,7 +15,7 @@ export class DeleteEnvironmentComponent implements OnInit {
   envForm: FormGroup
   clickedButton: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private dialog: MatDialog, private data: DataService, @Inject(MAT_DIALOG_DATA) public fetch: any) {
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private dialog: MatDialog, private data: DataService, @Inject(MAT_DIALOG_DATA) public fetch: any, private location:Location) {
     this.envForm = this.formBuilder.group({
       code: new FormControl('', [Validators.required]),
     });
@@ -35,14 +35,15 @@ export class DeleteEnvironmentComponent implements OnInit {
         if (res.status.remarks === 'success') {
           this.data.apiRequest('/deleteimg', { "id": this.fetch })
           .subscribe((res: any) => {
-            return res;
+            // console.log(res);
           });
           this.dialog.closeAll();
           this.snackBar.open(res.status.message, '', {
             duration: 3000,
           })
           setTimeout(() => {  
-            window.close();
+            // window.close();
+            this.location.back()
           }, 3000);
         } else {
           this.snackBar.open(res.status.message, '', {

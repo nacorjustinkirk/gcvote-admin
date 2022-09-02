@@ -71,12 +71,18 @@ export class CandidatesComponent implements OnInit {
   }
 
   addPosition (id: any) {
-    this.dialog.open(AddPositionComponent, {
+    const dialogRef = this.dialog.open(AddPositionComponent, {
       width: '800px',
       data: {
         envid: id
       }
     });
+
+    dialogRef.afterClosed().subscribe((data)=>{
+      if(data?.data){
+        this.positionData.push(data?.data);
+      }
+    })
   }
 
   deleteEnvironment() {
@@ -86,24 +92,25 @@ export class CandidatesComponent implements OnInit {
     })
   }
 
-  deleteCandidate(id: any, studno: any) {
+  deleteCandidate(id: any, studno: any, index: any) {
     this.data.apiRequest('/deletecandidate', { "candidateid_fld": id })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.data.apiRequest('/deleteimg', { "id": studno })
           .subscribe((res: any) => {
-            return res;
+            console.log(res);
           });
+        this.candidateData.splice(index, 1);
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
         });
-        this.dialog.closeAll();
-        setTimeout(() => {  
-          this.router.navigate([`/candidates/${this.id}`])
-          .then(() => {
-            window.location.reload();
-          });
-        }, 2000);
+        // this.dialog.closeAll();
+        // setTimeout(() => {  
+        //   this.router.navigate([`/candidates/${this.id}`])
+        //   .then(() => {
+        //     window.location.reload();
+        //   });
+        // }, 2000);
       } else {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
@@ -113,20 +120,15 @@ export class CandidatesComponent implements OnInit {
     })
   }
 
-  deletePosition(id: any) {
+  deletePosition(id: any, index: any) {
     this.data.apiRequest('/deleteposition', { "posid_fld": id })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
         });
-        this.dialog.closeAll();
-        setTimeout(() => {  
-          this.router.navigate([`/candidates/${this.id}`])
-          .then(() => {
-            window.location.reload();
-          });
-        }, 2000);
+
+        this.positionData.splice(index, 1);
       } else {
         this.snackBar.open(res.status.message, '', {
           duration: 5000,

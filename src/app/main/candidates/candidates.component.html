@@ -14,26 +14,26 @@
   </div>
 
   <div class="content">
-    <div class="candidates" *ngFor="let pos of positionData">
+    <div class="candidates" *ngFor="let pos of positionData; index as i">
       <div class="position">
         <h2>{{ pos.posname_fld }}</h2>
         <div class="button-content">  
           <button (click)="addCandidate(id, pos.posid_fld)" matTooltip="Add Candidate" matTooltipClass="tooltip">
             <mat-icon>person_add</mat-icon>
           </button>
-          <button (click)="deletePosition(pos.posid_fld)" [disabled]="candidateData.length > 0" matTooltip="Delete Position" matTooltipClass="tooltip">
+          <button (click)="deletePosition(pos.posid_fld, i)" [disabled]="candidateData.length > 0" matTooltip="Delete Position" matTooltipClass="tooltip">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </div>
       </div>
-      <div class="students" *ngFor="let cand of candidateData">
+      <div class="students" *ngFor="let cand of candidateData; index as i">
         <div class="stud-info" *ngIf="cand.posid_fld == pos.posid_fld">
-          <img src="https://api-gcevs.tech/voting/request/img/{{ cand.studno_fld }}/2x2.jpg" width="75px">
+          <img src="http://localhost/voting-api/request/img/{{ cand.studno_fld }}/{{ cand.studno_fld }}.jpg" width="75px">
           <div class="stud-content">
             <h2>{{ cand.studfname_fld }} {{ cand.studlname_fld }}</h2>
             <h4>{{ cand.partylist_fld }}</h4>
           </div>
-          <button (click)="deleteCandidate(cand.candidateid_fld, cand.studno_fld)"  matTooltip="Delete Candidate" matTooltipClass="tooltip">
+          <button (click)="deleteCandidate(cand.candidateid_fld, cand.studno_fld, i)"  matTooltip="Delete Candidate" matTooltipClass="tooltip">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </div>

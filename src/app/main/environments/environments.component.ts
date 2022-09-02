@@ -24,12 +24,10 @@ export class EnvironmentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.data.apiRequest('/getenv', { "adminid_fld": this.key })
-      .subscribe((res: any) => {
-          this.envData = res.payload;
-      });
-    }, 1000)
+    this.data.apiRequest('/getenv', { "adminid_fld": this.key })
+    .subscribe((res: any) => {
+        this.envData = res.payload;
+    });
   }
 
   getDepartmentName(code: string) {
@@ -43,13 +41,15 @@ export class EnvironmentsComponent implements OnInit {
         key: data
       }
     });
+
+    dialogRef.afterClosed().subscribe((data)=>{
+      if(data?.data){
+        this.envData.push(data?.data);
+      }
+    })
   }
   
   external(id: any) {
-    const url = this.router.serializeUrl(
-      this.router.createUrlTree(['/candidates', id])
-    );
-
-    window.open(url, '_blank');
+    this.router.navigate([`/candidates/${id}`])
   }
 }
