@@ -3,6 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { department } from '../data/offerings';
 
+// types.d.ts
+
+// @ts-ignore
+import * as html2pdf from 'html2pdf.js'
+// declare let html2pdf: any;
+
 @Component({
   selector: 'app-votes',
   templateUrl: './votes.component.html',
@@ -83,13 +89,6 @@ export class VotesComponent implements OnInit {
     });
   }
 
-  // sortCandidateByNumberOfVotes() {
-  //   this.candidateData.sort((a: any, b: any) => {
-  //     console.log(a.countNumberOfVotes - b.countNumberOfVotes);
-  //   });
-  // }
-
-
   getDepartmentName(code: string) {
     return this.department.find(x => x.depCode === code)?.depName;
   }
@@ -98,17 +97,17 @@ export class VotesComponent implements OnInit {
     return new Date().toDateString().split(' ').slice(1).join(' '); 
   }
 
+  showDate(date: any) {
+    return new Date(date).toDateString().split(' ').slice(1).join(' '); 
+  }
+
   toLocaleTime() {
     return new Date().toLocaleTimeString();
   }
 
-  // countNumberOfVotes(candidate: any) {
-  //   var count = 0;
-  //   for (let i = 0; i < this.voteData.length; i++) {
-  //     console.log(this.voteData[i][i]['candidate']);
-  //   }
-  //   return count;
-  // }
+  getPositionNameById(posid: any): string {
+    return this.positionData.find((x: any) => x.posid_fld === posid)?.posname_fld;
+  }
 
   countNumberOfVotes(candidate: any) {
     var count = 0;
@@ -134,7 +133,9 @@ export class VotesComponent implements OnInit {
     let getStudentSize = data;
     let getVoteSize = this.votes.length;
 
-    return (getVoteSize / getStudentSize) * 100;
+    let total = (getVoteSize / getStudentSize) * 100;
+
+    return total.toFixed(2);
   }
 
   countStudentsPerDepartment() {
@@ -145,6 +146,38 @@ export class VotesComponent implements OnInit {
       }
     }
     return count;
+  }
+  
+  onExport() {
+    
+    var opt = {
+      margin: 0,
+      filename: `GordonCollege-${this.envData.envname_fld}-Election-Return-${this.toLocaleDate()}-${this.toLocaleTime()}.pdf`,
+      image: { type: 'jpeg', quality: 1.0 },
+      html2canvas: { dpi: 75, scale: 2, letterRendering: true},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+
+    const element = document.getElementById('element-to-export');
+    
+    // New Promise-based usage:
+    html2pdf()
+      .from(element)
+      .set(opt)
+      .toPdf()
+      .get('pdf').then(function (pdf: any) {
+        var totalPages = pdf.internal.getNumberOfPages();
+
+          for (let i = 1; i <= totalPages; i++) {
+            pdf.setPage(i);
+            pdf.setFontSize(8);
+            pdf.text('Page ' + i + ' of ' + totalPages, pdf.internal.pageSize.getWidth()+10, 
+            pdf.internal.pageSize.getHeight()+10, "right");
+          } 
+      }).save();
+
+    
   }
 
 }
@@ -159,3 +192,4 @@ interface Count {
   partylist_fld: string;
   numOfVotes: number;
 }
+

@@ -1,65 +1,3 @@
-//   html {
-//    background-color: #FF9999 !important;
-//    height: 100vh;
-   
-//    .overlay {
-//      position: absolute;
-//      filter: grayscale(100%);
-//      height: 100%;
-//      width: 100%;
-//      opacity: 25%;
-//    }
-//   }
-  
-//   h3 {
-//     font-weight: bolder;
-//     color: #FF9999;
-//     margin-top: 10px;
-//     margin-left: 315px;
-//   }
-
-//   .mat-form-field {
-//     width: 100%;
-//     min-width: 200px; 
-//     font-size: 1.1rem;
-//     margin-top: 10px;
-//   }
-
-//   .emailField {
-//     margin-bottom: -20px;
-//   }
-
-//   .error {
-//     padding: 16px;
-//     width: 300px;
-//     color: white;
-//     background-color: red;
-//   }
-
-//   .mat-raised-button {
-//     display: flex;
-//     justify-content: center;
-//     width: 100%;
-//     min-width: 200px; 
-//     color: #fff;
-//   }
-
-// mat-card{
-//     top: 85px;
-//     width: 500px;
-//     height: 500px;
-//     display: block;
-//     margin-left:auto;
-//     margin-right:auto;  
-
-//     img {
-//         margin-top: 15px;
-//         height: 160px;
-//         width: 160px;
-//         margin-left: 150px;
-//         margin-bottom: 10px;
-//       }  
-// }
 .bg {
   background: url('../../assets/school.jpg');
   background-position: center;
@@ -137,6 +75,13 @@ form {
     margin: 15px 0;
     padding: 8px 14px;
     font-weight: 500;
+
+    mat-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   mat-error {

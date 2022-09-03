@@ -26,6 +26,10 @@
         <mat-error *ngIf="!loginForm.value.admin_password">Password is required</mat-error>
     </mat-form-field>
     
-    <button class="sign-in" mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid" (click)="login()">Sign in</button>
+    <button class="sign-in" mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid || checked" (click)="login(); checked = true">
+        <span *ngIf="checked == false">Sign in</span>
+        <span *ngIf="checked == true">Signing in...</span>
+        <mat-spinner [diameter]="30" *ngIf="checked == true"></mat-spinner>
+    </button>
     <mat-error>{{ message }}</mat-error>
 </form>

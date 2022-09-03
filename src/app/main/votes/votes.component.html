@@ -39,3 +39,101 @@
     </div>
 </div>
 
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <button class="btn-export" (click)="onExport()">Export Now</button>
+            </mat-panel-title>
+            <mat-panel-description>
+                A downloadable (.pdf) file containing the results of the election (Click me!)
+                
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="document" id="element-to-export">
+            <div class="header">
+                <img src="../../../assets/gc.png" width="100px">
+                <div class="header-title">
+                    <p>Republic of the Philippines</p>
+                    <p>City of Olongapo</p>
+                    <h1>GORDON COLLEGE</h1>
+                    <p>Olongapo City Sports Complex, Donor St. East Tapinac, Olongapo City</p>
+                    <a href="www.gordoncollege.edu.ph">www.gordoncollege.edu.ph</a>
+                </div>
+                <img src="../../../assets/osws.png" width="100px">
+            </div>
+            <hr color="#808080" width="80%">
+            <h2 class="head-title">VOTE RESULTS</h2>
+            <hr color="#808080" width="80%">
+        
+            <div class="election-info">
+                <p>Election Environment Code: <strong>{{ envData.envid_fld }}</strong></p>
+                <p>Election Title: <strong>{{ envData.envname_fld }}</strong></p>
+                <p>Election Date: <strong>{{ showDate(envData.envdate_fld) }}</strong></p>
+                <p>Total Student Voters: <strong>{{ countStudentsPerDepartment() }}</strong></p>
+                <p>Election Returns: <strong>{{ calculateElectionReturns(countStudentsPerDepartment()) }}%</strong> ({{ voteData.length }} students voted) <br><br> As of <strong>{{ toLocaleDate() }}</strong>, <strong>{{ toLocaleTime() }}</strong></p>
+                <p>Source: <a href="https://api-gcevs.tech">https://api-gcevs.tech</a> </p>
+            </div>
+        
+            <div class="results">
+                <div class="table-responsive">
+                    <p class="border">
+                        <strong>Candidate Name (Partylist)</strong>
+                    </p>
+                    <p class="border">
+                        <strong>Position</strong>
+                    </p>
+                    <p class="border">
+                        <strong>Votes Garnered</strong>
+                    </p>
+                </div>
+                <div class="" *ngFor="let pos of positionData">
+                    <div *ngFor="let can of candidateData">
+                        <div class="table-responsive" *ngIf="pos.posid_fld == can.posid_fld">
+                            <p class="border">{{ can.studfname_fld }} {{ can.studlname_fld }} ({{ can.partylist_fld }})</p>
+                            <p class="border">{{ pos.posname_fld }}</p>
+                            <p class="border">{{ can.numOfVotes }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="signature">
+                <div class="committee">
+                    <h3>Prepared and Certified by Technical Team</h3>
+                    <div class="personnel">
+                        <p>Mr. Arnie Armada</p>
+                           <p>Mr. Denris Provido</p>
+                        <p>Mr. Mark Thaddeus Manuel</p>
+                        <p>Mr. Daniele Victor Marilag</p>
+                        <p>Mr. Jayvee Ubaldo</p>
+                    </div>
+                </div>
+                <div class="committee">
+                    <h3>Noted by College Student Electoral Board</h3>
+                    <div class="personnel">
+                        <p>Ms. Kimberly Recitis</p>
+                        <p>Mr. Jayvee Versoza</p>
+                        <p>Mr. Simon Gerard Granil</p>
+                        <p>Ms. Maria Angeline Mendoza</p>
+                        <p>Ms. Monica Estrada</p>
+                        <p>Ms. Camille Anne Sevilleno</p>
+                    </div>
+                </div>
+                <div class="committee">
+                    <h3>Approved by VP for Student Welfare and Services</h3>
+                    <div class="personnel">
+                        <p>Ms. Lovelyn P. Ceralde</p> 
+                    </div>
+                </div>
+            </div>
+        
+            <hr color="#808080" width="80%">
+            <div class="footer">
+                <p>Copyright 2022 @ Gordon College Enhanced Voting System</p>
+            </div>
+        </div>
+        
+    </mat-expansion-panel>
+</mat-accordion>
+
