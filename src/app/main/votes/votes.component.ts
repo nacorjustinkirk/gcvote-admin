@@ -181,12 +181,12 @@ export class VotesComponent implements OnInit {
   onExport() {
     
     var opt = {
-      margin: 0,
+      margin: [0.5, 0.2, 0.72, 0.2],
       filename: `GordonCollege-${this.envData.envname_fld}-Election-Return-${this.toLocaleDate()}-${this.toLocaleTime()}.pdf`,
       image: { type: 'jpeg', quality: 1.0 },
       html2canvas: { dpi: 75, scale: 2, letterRendering: true},
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      jsPDF: { unit: 'in', format: 'legal', orientation: 'portrait' },
+      pagebreak: { mode: ['css', 'legacy'] },
     };
 
     const element = document.getElementById('element-to-export');
