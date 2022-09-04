@@ -29,19 +29,37 @@ export class VotesComponent implements OnInit {
   id = this.route.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
-    this.data.apiRequest('/getenv', { "envid_fld": this.id })
+    this.data.apiRequest('/getenv', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "envid_fld": this.id 
+      }
+    })
     .subscribe((res: any) => {
         if (res.payload.length > 0) {
           this.envData = res.payload[0];
         }
     });
-    this.data.apiRequest('/getposition', { "envid_fld": this.id })
-      .subscribe((res: any) => {
-        if (res.status.remarks == 'success') {
-          this.positionData = res.payload;
-        } 
-      });
-    this.data.apiRequest('/getvotes', { "envid_fld": this.id })
+    this.data.apiRequest('/getposition', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "envid_fld": this.id 
+      }
+    })
+    .subscribe((res: any) => {
+      if (res.status.remarks == 'success') {
+        this.positionData = res.payload;
+      } 
+    });
+    this.data.apiRequest('/getvotes', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "envid_fld": this.id 
+      }
+     })
     .subscribe((res: any) => {
       if (res.status.remarks == 'success') {
           this.votes = res.payload;
@@ -53,7 +71,13 @@ export class VotesComponent implements OnInit {
           }
         }
       });
-    this.data.apiRequest('/getcandidate', { "envid_fld": this.id })
+    this.data.apiRequest('/getcandidate', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "envid_fld": this.id 
+      }
+     })
       .subscribe((res: any) => {
         if (res.status.remarks == 'success') {
           let temp: any = [];
@@ -81,11 +105,17 @@ export class VotesComponent implements OnInit {
           });
         } 
     });
-    this.data.apiRequest('/getstudent', { "studno_fld": null })
-      .subscribe((res: any) => {
-        if (res.status.remarks == 'success') {
-          this.studentData = res.payload;
-        }
+    this.data.apiRequest('/getstudent', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "studno_fld": null
+      }
+    })
+    .subscribe((res: any) => {
+      if (res.status.remarks == 'success') {
+        this.studentData = res.payload;
+      }
     });
   }
 

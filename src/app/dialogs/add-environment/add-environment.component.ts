@@ -94,12 +94,20 @@ export class AddEnvironmentComponent implements OnInit {
       view_fld: true,
     }
 
-    this.data.apiRequest('/addenv', data)
+    this.data.apiRequest('/addenv', {
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: data,
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.data.apiRequest('/uploadimg', {
-          'id': data.envid_fld,
-          'img': this.envForm.value.base64,
+          stud_no: sessionStorage.getItem('username'),
+          signature: sessionStorage.getItem('raw'),
+          payload: {
+            'id': data.envid_fld,
+            'img': this.envForm.value.base64,
+          }
         })
         .subscribe((res: any) => {
           // console.log(res);

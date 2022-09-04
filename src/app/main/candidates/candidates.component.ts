@@ -30,13 +30,25 @@ export class CandidatesComponent implements OnInit {
 
   ngOnInit(): void {
     // setInterval(() => {
-      this.data.apiRequest('/getposition', { "envid_fld": this.id })
+      this.data.apiRequest('/getposition', { 
+        stud_no: sessionStorage.getItem('username'),
+        signature: sessionStorage.getItem('raw'),
+        payload: {
+          "envid_fld": this.id,
+        }
+      })
       .subscribe((res: any) => {
         if (res.status.remarks === 'success') {
           this.positionData = res.payload;
         } 
       });
-      this.data.apiRequest('/getcandidate', { "envid_fld": this.id })
+      this.data.apiRequest('/getcandidate', { 
+        stud_no: sessionStorage.getItem('username'),
+        signature: sessionStorage.getItem('raw'),
+        payload: {
+          "envid_fld": this.id,
+        }
+      })
       .subscribe((res: any) => {
         if (res.status.remarks === 'success') {
           this.candidateData = res.payload;
@@ -46,7 +58,14 @@ export class CandidatesComponent implements OnInit {
   }
 
   updateVisibility() {
-    this.data.apiRequest('/updatestatus', { "view_fld": this.isChecked, "envid_fld": this.id })
+    this.data.apiRequest('/updatestatus', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "view_fld": this.isChecked,
+        "envid_fld": this.id 
+      }
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.snackBar.open(res.status.message, '', {
@@ -93,13 +112,25 @@ export class CandidatesComponent implements OnInit {
   }
 
   deleteCandidate(id: any, studno: any, index: any) {
-    this.data.apiRequest('/deletecandidate', { "candidateid_fld": id })
+    this.data.apiRequest('/deletecandidate', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "candidateid_fld": id 
+      }
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
-        this.data.apiRequest('/deleteimg', { "id": studno })
-          .subscribe((res: any) => {
-            console.log(res);
-          });
+        this.data.apiRequest('/deleteimg', { 
+          stud_no: sessionStorage.getItem('username'),
+          signature: sessionStorage.getItem('raw'),
+          payload: {
+            "id": studno
+          }
+        })
+        .subscribe((res: any) => {
+          console.log(res);
+        });
         this.candidateData.splice(index, 1);
         this.snackBar.open(res.status.message, '', {
           duration: 5000,
@@ -121,7 +152,14 @@ export class CandidatesComponent implements OnInit {
   }
 
   deletePosition(id: any, index: any) {
-    this.data.apiRequest('/deleteposition', { "posid_fld": id })
+    this.data.apiRequest('/deleteposition', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        "posid_fld": id 
+
+      }
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.snackBar.open(res.status.message, '', {

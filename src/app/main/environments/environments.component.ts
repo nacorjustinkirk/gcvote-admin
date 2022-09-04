@@ -23,13 +23,19 @@ export class EnvironmentsComponent implements OnInit {
     private router: Router,
   ) { }
 
+      
+
   ngOnInit(): void {
-    this.data.apiRequest('/getenvadmin', { "adminid_fld": this.key })
+    this.data.apiRequest('/getenvadmin', {
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        adminid_fld: sessionStorage.getItem('userid'),
+      }
+    })
     .subscribe((res: any) => {
         this.envData = res.payload;
     });
-
-    console.log(this.key)
   }
 
   getDepartmentName(code: string) {

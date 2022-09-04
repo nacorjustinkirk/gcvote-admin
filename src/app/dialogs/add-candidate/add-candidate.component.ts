@@ -92,7 +92,13 @@ export class AddCandidateComponent implements OnInit {
   search(event: any) {
     if (event.target.value.length === 9) {
       setTimeout(() => {
-        this.data.apiRequest('/getstudent', { studno_fld: event.target.value })
+        this.data.apiRequest('/getstudent', { 
+          stud_no: sessionStorage.getItem('username'),
+          signature: sessionStorage.getItem('raw'),
+          payload: {
+            studno_fld: event.target.value,
+          }
+        })
         .subscribe((res: any) => {
           if (res.status.remarks === 'success') {
             this.resultValue = `Candidate Name: ${res.payload[0].studfname_fld} ${res.payload[0].studlname_fld} `
@@ -118,12 +124,20 @@ export class AddCandidateComponent implements OnInit {
       candidatedept_fld: this.candidateForm.value.department,
     }
 
-    this.data.apiRequest('/addcandidate', data)
+    this.data.apiRequest('/addcandidate', {
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: data,
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.data.apiRequest('/uploadimg', {
-          'id': this.candidateForm.value.studno,
-          'img': this.candidateForm.value.base64,
+          stud_no: sessionStorage.getItem('username'),
+          signature: sessionStorage.getItem('raw'),
+          payload: {
+            'id': this.candidateForm.value.studno,
+            'img': this.candidateForm.value.base64,
+          }
         })
         .subscribe((res: any) => {
           // console.log(res);

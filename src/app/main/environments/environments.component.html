@@ -12,7 +12,7 @@
     <div class="card-container">
       <div class="card" *ngFor="let env of envData" (click)="external(env.envid_fld)">
         <!-- <img src="https://api-gcevs.tech/voting/request/img/{{ env.envid_fld }}/2x2.jpg"> -->
-        <img src="http://localhost/voting-api/request/img/{{ env.envid_fld }}/{{ env.envid_fld }}.jpg">
+        <img src="https://gordoncollegeccs.edu.ph/prj/election/api/request/img/{{ env.envid_fld }}/{{ env.envid_fld }}.jpg">
         <div class="card-content">
           <h2>{{ env.envname_fld }}</h2>
           <h4>{{ getDepartmentName(env.envdept_fld) }}</h4>

@@ -24,7 +24,9 @@ export class SessionService {
   }
 
   uploadToSession(data: any) {
-    sessionStorage.setItem('raw', data);
+    sessionStorage.setItem('raw', data.admintoken_fld);
+    sessionStorage.setItem('username', data.adminuser_fld);
+    sessionStorage.setItem('userid', data.adminid_fld);
   }
 
   getSessionData() {
@@ -32,11 +34,10 @@ export class SessionService {
   }
 
   deleteData() {
-    sessionStorage.removeItem("raw");
+    sessionStorage.clear();
   }
 
   searchSessionId() {
     return sessionStorage.getItem('id');
-  }
-  
+  }  
 }

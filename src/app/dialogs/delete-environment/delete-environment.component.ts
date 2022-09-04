@@ -30,10 +30,22 @@ export class DeleteEnvironmentComponent implements OnInit {
         duration: 2000,
       });
     } else {
-    this.data.apiRequest('/deleteenv', { "envid_fld": this.fetch })
+    this.data.apiRequest('/deleteenv', { 
+        stud_no: sessionStorage.getItem('username'),
+        signature: sessionStorage.getItem('raw'),
+        payload: {
+          "envid_fld": this.fetch 
+        }
+      })
       .subscribe((res: any) => {
         if (res.status.remarks === 'success') {
-          this.data.apiRequest('/deleteimg', { "id": this.fetch })
+          this.data.apiRequest('/deleteimg', { 
+            stud_no: sessionStorage.getItem('username'),
+            signature: sessionStorage.getItem('raw'),
+            payload: {
+              "id": this.fetch
+            }
+          })
           .subscribe((res: any) => {
             // console.log(res);
           });

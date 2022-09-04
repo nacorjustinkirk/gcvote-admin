@@ -21,15 +21,18 @@ export class MainComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    var data:any = this.sessionService.getSessionData();
-    this.token = this.sessionService.decodeData(data);
-
-    this.dataService.apiRequest('/getadmin', { "adminid_fld": this.token.uid })
+    this.dataService.apiRequest('/getadmin', {
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        adminid_fld: sessionStorage.getItem('userid'),
+      }
+    })
     .subscribe((res: any) => {
       this.adminData = res.payload[0];
     })
   }
-  
+
   logoutAccount() {
     this.sessionService.deleteData();
     this.adminData = null;

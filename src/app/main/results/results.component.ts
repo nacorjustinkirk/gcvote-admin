@@ -10,12 +10,17 @@ import { DataService } from 'src/app/services/data.service';
 export class ResultsComponent implements OnInit {
 
   envData: any = [];
-  key: any = this.router.snapshot.paramMap.get('id');
 
   constructor(private data: DataService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.data.apiRequest('/getenvadmin', { "adminid_fld": this.key })
+    this.data.apiRequest('/getenvadmin', { 
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: {
+        adminid_fld: sessionStorage.getItem('userid'),
+      }
+    })  
     .subscribe((res: any) => {
         this.envData = res.payload;
     }); 

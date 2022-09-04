@@ -48,7 +48,11 @@ export class AddPositionComponent implements OnInit {
       postype_fld: this.positionForm.value.type,
     }
 
-    this.data.apiRequest('/addposition', data)
+    this.data.apiRequest('/addposition', {
+      stud_no: sessionStorage.getItem('username'),
+      signature: sessionStorage.getItem('raw'),
+      payload: data,
+    })
     .subscribe((res: any) => {
       if (res.status.remarks === 'success') {
         this.snackBar.open(res.status.message, '', {
