@@ -21,7 +21,7 @@
         <div class="position">
             <h2>{{ pos.posname_fld }}</h2>
         </div>
-        <div class="students" *ngFor="let cand of candidateData" >
+        <div class="students" *ngFor="let cand of candidateData">
             <div class="stud-info" *ngIf="cand.posid_fld == pos.posid_fld">
                 <img src="https://gordoncollegeccs.edu.ph/prj/election/api/request/img/{{ cand.studno_fld }}/{{ cand.studno_fld }}.jpg" width="75px">
                 <div class="result-content">
@@ -100,17 +100,17 @@
         
             <div class="signature">
                 <div class="committee">
-                    <h3>Prepared and Certified by Technical Team</h3>
+                    <h3>Prepared and Certified by Election Committee</h3>
                     <div class="personnel">
-                        <p>Mr. Denris Provido</p>
-                        <p>Mr. Mark Thaddeus Manuel</p>
-                        <p>Mr. Daniele Victor Marilag</p>
-                        <p>Mr. Jayvee Ubaldo</p>
+                        <p>Mr. Arnie Armada <br>Chairperson</p>
+                        <p>Vice Chairperson</p>
+                        <p>Ms. Agnes Melo <br>Secretary</p>
+                        <!-- <p>Mr. Jayvee Ubaldo</p>
                         <p>Mr. Arnie Armada</p>
-                        <p>Mr. Melner Balce</p>
+                        <p>Mr. Melner Balce</p> -->
                     </div>
                 </div>
-                <div class="committee">
+                <!-- <div class="committee">
                     <h3>Noted by College Student Electoral Board</h3>
                     <div class="personnel">
                         <p>Mr. Jayvee Versoza</p>
@@ -126,7 +126,7 @@
                     <div class="personnel">
                         <p>Ms. Lovelyn P. Ceralde</p> 
                     </div>
-                </div>
+                </div> -->
             </div>
         
             <hr color="#808080" width="80%">

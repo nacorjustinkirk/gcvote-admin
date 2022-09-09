@@ -117,6 +117,8 @@ export class VotesComponent implements OnInit {
         this.studentData = res.payload;
       }
     });
+
+    console.log(this.voteData)
   }
 
   getDepartmentName(code: string) {
@@ -146,10 +148,17 @@ export class VotesComponent implements OnInit {
         if (this.voteData[i][j]['candidateid_fld'] == candidate) {
           count++;
         }
+        // for (let k = 0; k < this.voteData[i][j].length; k++) {
+        //   if (this.voteData[i][j]['candidateid_fld'][j] == candidate) {
+        //     count++
+        //   }
+        // }
       }
     }
     return count;
   }
+
+  
 
 
   // sortCandidateByNumberOfVotes() {

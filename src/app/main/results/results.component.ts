@@ -27,11 +27,9 @@ export class ResultsComponent implements OnInit {
   }
 
   external(id: any) {
-    const url = this.route.serializeUrl(
-      this.route.createUrlTree(['/votes', id])
-    );
+   this.route.navigate(['/votes', id]);
 
-    window.open(url, '_blank');
+    // window.open(url, '_blank');
   }
 
   dateString(date: any) {
